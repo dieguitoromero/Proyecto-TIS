@@ -19,18 +19,18 @@
 
             <div class="col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 n">
                 <div class="my-2 text-center">
-                    <img class="img-fluid" src="" width="250" alt="">
+                    <img class="img-fluid" src="imagenes/Reservado.jpg" width="250" alt="">
                 </div>
                 <div id="carouselExampleControls" class="carousel slide mb-3" data-bs-ride="carousel">
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img src="./img/login1.jpg" class="d-block w-100" alt="...">
+                        <img src="imagenes/login1.jpg" class="d-block w-100" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img src="img/login2.png" class="d-block w-100" alt="...">
+                        <img src="imagenes/login2.png" class="d-block w-100" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img src="img/login4.jpg" class="d-block w-100" alt="...">
+                        <img src="imagenes/login3.jpg" class="d-block w-100" alt="...">
                       </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -50,7 +50,7 @@
             <!--logo-->
             <div class="col">
                 <div class="text-end m-5">
-                    <img src="img/logo-ucsc-color.png" width="250" alt="">
+                    <img src="imagenes/logo_horizontal_color_sinfondo.png" width="250" alt="">
                 </div>
 
                 <h2 class="text-center fw-bold py-5">Bienvenido</h2>
@@ -71,12 +71,12 @@
                         <input class="form-check-input" type="checkbox" name="connected">
                         <label class="form-check-label" for="connected">Recordar cuenta</label>
                     </div>
-                    <div class="d-grid">
-                        <button class="btn btn-outline-danger" type="submit" >Iniciar sesión</button>
+                    <div class="d-grid"> 
+                        <button class="btn btn-outline-danger" type="submit"> Iniciar sesión</button>
                     </div>
 
                     <div class="my-3">
-                        <span>No tienes cuenta? <a href="registrar.html">Regístrate</a></span>
+                        <span>No tienes cuenta? <a href="registrar_usuario.php">Regístrate</a></span>
                     </div>
                 </form>
         
