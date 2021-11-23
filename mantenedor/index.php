@@ -1,84 +1,92 @@
-<?php
-require "conexion.php";
-?>
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!--icon font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <title>Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos.css">
+    <title>login</title>
 </head>
 
 <body>
 
-  <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html"><img style="width: 110px; height:40px;" src="imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
+    <div class="container w-100 mt-5 rounded shadow ">
+        <div class="row align-items-stretch">
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-md-end me-5" id="navbarNav">
-        <ul class="navbar-nav ">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="registros_vehiculos.php">Registros vehiculos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="Registros_usuarios.php">Registro usuario</a>
-          </li>
+            <!--1 Col-->
 
-        </ul>
-      </div>
+            <div class="col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 n">
+                <div class="my-2 text-center">
+                    <img class="img-fluid" src="" width="250" alt="">
+                </div>
+                <div id="carouselExampleControls" class="carousel slide mb-3" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="./img/login1.jpg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="img/login2.png" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="img/login4.jpg" class="d-block w-100" alt="...">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+            
+            </div>
+
+            <!--2 Col-->
+
+            <!--logo-->
+            <div class="col">
+                <div class="text-end m-5">
+                    <img src="img/logo-ucsc-color.png" width="250" alt="">
+                </div>
+
+                <h2 class="text-center fw-bold py-5">Bienvenido</h2>
+                
+                <!--Login-->
+
+                <form action="#">
+                    <div class="mb-4">
+                        <label for="run" class="form-label">Run</label>
+                        <input class="form-control" type="texto" name="run">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="contraseña" class="form-label">Contraseña</label>
+                        <input class="form-control" type="texto" name="contraseña">
+                    </div>
+                    <div class="mb-4 form-check">
+                        <input class="form-check-input" type="checkbox" name="connected">
+                        <label class="form-check-label" for="connected">Recordar cuenta</label>
+                    </div>
+                    <div class="d-grid">
+                        <button class="btn btn-outline-danger" type="submit" >Iniciar sesión</button>
+                    </div>
+
+                    <div class="my-3">
+                        <span>No tienes cuenta? <a href="registrar.html">Regístrate</a></span>
+                    </div>
+                </form>
+        
+                <!--Login-->
+                  
+            </div>
+        </div>
     </div>
-  </nav>
-  <section class="container px-4 py-5 my-5 " id="featured-3">
-    <h1 class="pb-2 border-bottom text-center">Mantenedores</h1><br>
 
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
-
-      <div class="feature col border-dark">
-        <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
-          <span class="material-icons fs-1 ">
-            directions_car
-          </span>
-        </div>
-        <h2>Vehiculos</h2>
-        <p>Encontraras el registro completo de los vehiculos registrados en la UCSC</p>
-        <div class="d-grid gap-2 d-md-block">
-          <button class="btn btn-danger col-9" onclick="location.href = 'registros_vehiculos.php'" type="button">Ver</button>
-        </div>
-      </div>
-
-      <div class="feature col border-dark">
-        <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
-          <span class="material-icons fs-1 ">
-            account_circle
-          </span>
-        </div>
-        <h2>Usuarios</h2>
-        <p>Encontraras el registro completo de los usuarios registrados en la UCSC</p>
-        <div class="d-grid gap-2 d-md-block">
-          <button class="btn btn-danger col-9" onclick="location.href = 'registros_usuarios.php'" type="button">Ver</button>
-        </div>
-      </div>
-
-      
-
-    </div>
-  </section>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 </html>
