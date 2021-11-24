@@ -36,15 +36,15 @@ if($run == null || $run == ''){
       </button>
       <div class="collapse navbar-collapse justify-content-md-end me-5" id="navbarNav">
         <ul class="navbar-nav ">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index2.php">Administrador</a></li>
-              <li class="breadcrumb-item active">Página actual</li>
+        <nav aria-label="breadcrumb me-5 ">
+            <ol class="breadcrumb ">
+              <li class="breadcrumb-item mt-2"><a href="index2.php">Administrador</a></li>
+              <li class="breadcrumb-item active mt-2">Página actual</li>
             </ol>
           </nav>
 
-          <li class="nav-item bg-danger border ">
-            <a class="nav-link active" href="salir.php">Cerrar sesion</a>
+          <li class="nav-item  ms-5">
+            <a class="btn btn-danger" href="salir.php">Cerrar sesion</a>
           </li>
 
         </ul>
@@ -84,10 +84,12 @@ if($run == null || $run == ''){
         </button><br><br>
       </div>
     </div>
+    <div class="">
     <form class="col-3" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-      <input type="text" name="buscar" class="form-control col-6" placeholder="busqueda por patente"><br>
-      <input type="submit" name="buscando" value="Buscar" class="btn btn-primary col-12"><br>
+      <input type="text" name="buscar" class="form-control col-6" placeholder="Busqueda por patente"><br>
+      <input type="submit" name="buscando" value="Buscar" class="btn btn-secondary col-12"><br>
     </form>
+    </div>
     <div class="table-responsive mt-5">
       <table class="table table-striped table-sm">
         <thead>

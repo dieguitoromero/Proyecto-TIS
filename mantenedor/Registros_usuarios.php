@@ -89,8 +89,8 @@ if ($run == null || $run == '') {
         <br>
       </div>
       <form class="col-3" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-        <input type="text" name="buscar" class="form-control col-6" placeholder="busqueda por nombre"><br>
-        <input type="submit" name="buscando" value="Filtrar" class="btn btn-danger col-12"><br>
+        <input type="text" name="buscar" class="form-control col-6" placeholder="Busqueda por nombre"><br>
+        <input type="submit" name="buscando" value="Buscar" class="btn btn-secondary col-12"><br>
       </form>
     </div>
     <div class="table-responsive mt-5">
