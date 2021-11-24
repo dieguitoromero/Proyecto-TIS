@@ -1,3 +1,9 @@
+<?php 
+
+include('conexion.php');
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -57,7 +63,7 @@
                 
                 <!--Login-->
 
-                <form action="#">
+                <form action="loguear.php" method="POST">
                     <div class="mb-4">
                         <label for="run" class="form-label">Run</label>
                         <input class="form-control" type="texto" name="run">
@@ -65,18 +71,18 @@
 
                     <div class="mb-4">
                         <label for="contraseña" class="form-label">Contraseña</label>
-                        <input class="form-control" type="texto" name="contraseña">
+                        <input class="form-control" type="password" name="contraseña">
                     </div>
                     <div class="mb-4 form-check">
                         <input class="form-check-input" type="checkbox" name="connected">
                         <label class="form-check-label" for="connected">Recordar cuenta</label>
                     </div>
-                    <div class="d-grid"> 
-                        <button class="btn btn-outline-danger" type="submit"> Iniciar sesión</button>
+                    <div class="d-grid">
+                        <button class="btn btn-outline-danger" type="submit" >Iniciar sesión</button>
                     </div>
 
                     <div class="my-3">
-                        <span>No tienes cuenta? <a href="registrar_usuario.php">Regístrate</a></span>
+                        <span>No tienes cuenta? <a href="registrar.html">Regístrate</a></span>
                     </div>
                 </form>
         

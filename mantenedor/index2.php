@@ -1,6 +1,19 @@
 <?php
 require "conexion.php";
+session_start();
+$run = $_SESSION['user'];
+if($run == null || $run == ''){
+  echo "Usted no tiene autorización";
+  die();
+}
+else {
+$consulta = "SELECT * FROM `usuario` WHERE Run_usuario = '$run'";
+# variable conexion y consulta
+$resultado =  mysqli_query($conexion, $consulta);
+$row = mysqli_fetch_assoc($resultado);
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -22,30 +35,21 @@ require "conexion.php";
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html"><img style="width: 110px; height:40px;" src="imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-md-end me-5" id="navbarNav">
+      <a class="navbar-brand" href="index2.html"><img style=" height:50px;" src="imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
+      <div class="navbar justify-content-md-end me-5" id="navbarNav">
         <ul class="navbar-nav ">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
+         
+          <li class="nav-item col-12 bg-danger border ">
+            <a class="nav-link active" href="salir.php">Cerrar sesion</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="registros_vehiculos.php">Registros vehiculos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="Registros_usuarios.php">Registro usuario</a>
-          </li>
-
         </ul>
       </div>
     </div>
   </nav>
   <section class="container px-4 py-5 my-5 " id="featured-3">
     <h1 class="pb-2 border-bottom text-center">Mantenedores</h1><br>
-
+    <p class="text-center fs-5">Bienvenido <?php echo $row['Nombre_usuario']?></p>
+    
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
 
       <div class="feature col border-dark">
