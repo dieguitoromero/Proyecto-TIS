@@ -42,13 +42,13 @@ if ($run == null || $run == '') {
         <ul class="navbar-nav ">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index2.php">Administrador</a></li>
-              <li class="breadcrumb-item active">Página actual</li>
+              <li class="breadcrumb-item mt-2"><a href="index2.php">Administrador</a></li>
+              <li class="breadcrumb-item active mt-2">Página actual</li>
             </ol>
           </nav>
 
-          <li class="nav-item bg-danger border ">
-            <a class="nav-link active" href="salir.php">Cerrar sesion</a>
+          <li class="nav-item ms-5 ">
+            <a class="btn btn-danger" href="salir.php">Cerrar sesion</a>
           </li>
         </ul>
       </div>
@@ -75,25 +75,23 @@ if ($run == null || $run == '') {
     } ?>
     <!-- alerta que no funciona -->
 
-    <div class="row">
-      <div class="col-md-9 col-sm-8">
+    <div class="row ms-2">
+      <div class="col-md-8 col-sm-8">
         <h2>Registro Usuarios</h2>
       </div>
-      <div class="col-md-3 mt-1 col-sm-4">
+      <div class="col-md-6 mt-1 col-sm-4">
 
-        <button type="button" class="btn btn-danger active" onclick="location.href = 'registrar_usuario.php'" data-bs-toggle="button" autocomplete="off" aria-pressed="true">Agregar Usuario
+        <button type="button" class="btn btn-success active" onclick="location.href = 'registrar_usuario.php'" data-bs-toggle="button" autocomplete="off" aria-pressed="true">Agregar Usuario
           <span class="material-icons fs-6 ms-1 align-middle">
             add_circle
           </span>
         </button><br>
         <br>
       </div>
-      <form class="col-3" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-        <input type="text" name="buscar" class="form-control col-6" placeholder="Busqueda por nombre"><br>
-        <input type="submit" name="buscando" value="Buscar" class="btn btn-secondary col-12"><br>
-      </form>
+      
     </div>
-    <div class="table-responsive mt-5">
+    <div class="container-fluid row">
+    <div class="table-responsive col-9 mt-3">
       <table class="table table-striped table-sm">
         <thead>
           <tr>
@@ -147,6 +145,15 @@ if ($run == null || $run == '') {
           <?php } ?>
         </tbody>
       </table>
+    </div>
+    <div class="col-3 mt-4 ">    
+                  <form class="y-5" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                 <input type="text" name="buscar" class="form-control col-6" placeholder="Busqueda por nombre"><br>
+                  <input type="submit" name="buscando" value="Buscar" class="btn btn-secondary col-12"><br>
+                  </form>
+            </div> 
+  </div>
+    </div>
     </div>
   </main>
 
