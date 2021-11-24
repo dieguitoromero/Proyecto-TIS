@@ -78,7 +78,7 @@ $row = mysqli_fetch_assoc($resultado);
         </div>
       </div>
 
-      
+
 
     </div>
   </section>

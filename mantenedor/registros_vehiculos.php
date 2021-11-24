@@ -36,15 +36,12 @@ if($run == null || $run == ''){
       </button>
       <div class="collapse navbar-collapse justify-content-md-end me-5" id="navbarNav">
         <ul class="navbar-nav ">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index2.php">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="registros_vehiculos.php">Registros vehiculos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="Registros_usuarios.php">Registro usuario</a>
-          </li>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index2.php">Administrador</a></li>
+              <li class="breadcrumb-item active">Página actual</li>
+            </ol>
+          </nav>
 
           <li class="nav-item bg-danger border ">
             <a class="nav-link active" href="salir.php">Cerrar sesion</a>
@@ -76,41 +73,45 @@ if($run == null || $run == ''){
 
     <div class="row">
       <div class="col-md-9 col-sm-8">
-        <h2>Registro vehiculo</h2>
+        <h2>Registros de vehiculos</h2>
       </div>
       <div class="col-md-3 mt-1 col-sm-4">
 
-        <button type="button" class="btn btn-primary active" onclick="location.href = 'registrar_vehiculo.php'" data-bs-toggle="button" autocomplete="off" aria-pressed="true">Agregar Vehiculo
+        <button type="button" class="btn btn-danger active" onclick="location.href = 'registrar_vehiculo.php'" data-bs-toggle="button" autocomplete="off" aria-pressed="true">Agregar Vehiculo
           <span class="material-icons fs-6 ms-1 align-middle">
             add_circle
           </span>
-        </button>
-
+        </button><br><br>
       </div>
     </div>
-
-
-
+    <form class="col-3" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+      <input type="text" name="buscar" class="form-control col-6" placeholder="busqueda por patente"><br>
+      <input type="submit" name="buscando" value="Buscar" class="btn btn-primary col-12"><br>
+    </form>
     <div class="table-responsive mt-5">
       <table class="table table-striped table-sm">
         <thead>
-
           <tr>
-
             <th scope="col">Patente</th>
             <th scope="col">Marca</th>
             <th scope="col">Modelo</th>
             <th scope="col">Tipo vehiculo</th>
-            <th scope="col">#</th>
-
+            <th scope="col">Modificar/Eliminar</th>
           </tr>
-
         </thead>
         <tbody>
 
           <?php
+          $where = "";
           #consutal
-          $consulta = "select * from vehiculo ";
+
+          if (!empty($_POST)) {
+            $valor = $_POST['buscar'];
+            if (!empty($valor)) {
+              $where = "WHERE Patente_vehiculo LIKE '%$valor%'";
+            }
+          }
+          $consulta = "SELECT * FROM vehiculo $where";
           # variable conexion y consulta
           $resultado =  mysqli_query($conexion, $consulta);
 
@@ -125,13 +126,13 @@ if($run == null || $run == ''){
               <td><?php echo $row['tipo_vehiculo'] ?></td>
               <td>
                 <a href="edit_vehiculo.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
-                  <span class="material-icons text-dark fs-4 ">
+                  <span class="material-icons text-dark fs-4 ms-4">
                     edit
                   </span>
                 </a>
 
                 <a href="eliminar_vehiculo.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
-                  <span class="material-icons text-dark fs-4">
+                  <span class="material-icons text-dark fs-4 ms-4">
                     delete
                   </span>
                 </a>

@@ -84,6 +84,9 @@ include('conexion.php');
                     <div class="my-3">
                         <span>No tienes cuenta? <a href="registrar.html">Regístrate</a></span>
                     </div>
+                    <div class="my-3">
+                        <span>Acceso a <a href="index2.php">mantenedores</a></span>
+                    </div>
                 </form>
         
                 <!--Login-->

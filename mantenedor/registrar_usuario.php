@@ -2,7 +2,7 @@
 require "conexion.php";
 session_start();
 $run = $_SESSION['user'];
-if($run == null || $run == ''){
+if ($run == null || $run == '') {
   echo "Usted no tiene autorización";
   die();
 }
@@ -61,7 +61,7 @@ if($run == null || $run == ''){
 
       <div class="row">
         <div class="col-md-4 mx-auto">
-          <div class="card card-body">
+          <div class="card card-body text-center">
 
             <h2 class="mb-5">Registrar</h2>
             <form action="add_usuario.php" method="POST">
@@ -77,11 +77,8 @@ if($run == null || $run == ''){
               <div class="form-group mb-2">
                 <input type="email" name='correo' value="" class="form-control" placeholder="Correo electronico">
               </div>
-
-              
-
-              <button class="btn-succes" type='submit'>
-                registar
+              <button class="btn btn-danger col-12" type='submit'>
+                Registar
               </button>
             </form>
 

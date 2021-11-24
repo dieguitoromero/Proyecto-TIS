@@ -60,11 +60,11 @@ if($run == null || $run == ''){
     <div class="container p-4">
 
 
-      <div class="row">
+      <div class="row text-center">
         <div class="col-md-4 mx-auto">
           <div class="card card-body">
 
-            <h2 class="mb-5">Registrar</h2>
+            <h2 class="mb-5">Registrar Vehiculo</h2>
             <form action="add_vehiculo.php" method="POST">
 
               <div class="form-group mb-2">
@@ -84,8 +84,8 @@ if($run == null || $run == ''){
               </div>
 
               <div class="form-group mb-2">
-                <label class="mt-1" for="sel1"> Tipo de vehiculo </label>
                 <select class="form-control" name="tipo_vehiculo" id="sel1">
+                  <option selected>Tipo de vehiculo</option>
                   <option>Automovil</option>
                   <option>Motocicleta</option>
                   <option>Autobus</option>
@@ -94,10 +94,10 @@ if($run == null || $run == ''){
                 </select>
               </div>
 
-              <div class="form-group mb-2">
+              <div class="form-group mb-2 ">
                 <input type="text" name='desarrollo' value="" class="form-control" placeholder="Detalle">
               </div>
-              <button class="btn-succes" type='submit'>
+              <button class="btn btn-danger col-12" type='submit'>
                 Registar
               </button>
             </form>
