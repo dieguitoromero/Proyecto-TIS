@@ -1,11 +1,7 @@
 <?php
 require "conexion.php";
-session_start();
-$run = $_SESSION['user'];
-if ($run == null || $run == '') {
-  echo "Usted no tiene autorización";
-  die();
-}
+require "auth.php"
+
 ?>
 
 <!DOCTYPE html>
@@ -88,74 +84,73 @@ if ($run == null || $run == '') {
         </button><br>
         <br>
       </div>
-      
+
     </div>
     <div class="container-fluid row">
-    <div class="table-responsive col-9 mt-3">
-      <table class="table table-striped table-sm">
-        <thead>
-          <tr>
-
-            <th scope="col">Run</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Correo electronico</th>
-            <th scope="col">Modificar/Eliminar</th>
-
-          </tr>
-        </thead>
-        <tbody>
-
-          <?php
-          $where = "";
-          #consutal
-
-          if (!empty($_POST)) {
-            $valor = $_POST['buscar'];
-            if (!empty($valor)) {
-              $where = "WHERE Nombre_usuario LIKE '%$valor%'";
-            }
-          }
-          $consulta = "SELECT * FROM usuario $where";
-
-          # variable conexion y consulta
-          $resultado =  mysqli_query($conexion, $consulta);
-
-          while ($row = mysqli_fetch_assoc($resultado)) {
-
-          ?>
-
+      <div class="table-responsive col-9 mt-3">
+        <table class="table table-striped table-sm">
+          <thead>
             <tr>
-              <td><?php echo $row['Run_usuario'] ?></td>
-              <td><?php echo $row['Nombre_usuario'] ?></td>
-              <td><?php echo $row['Correo_electronico'] ?></td>
-              <td>
-                <a href="editar_usuario.php?Run_usuario=<?php echo $row['Run_usuario'] ?>">
-                  <span class="material-icons text-dark fs-4 ms-2">
-                    edit
-                  </span>
-                </a>
-                <a href="eliminar_usuario.php?Run_usuario=<?php echo $row['Run_usuario'] ?>">
-                  <span class="material-icons text-dark fs-4 ms-4">
-                    delete
-                  </span>
-                </a>
 
-              </td>
+              <th scope="col">Run</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Correo electronico</th>
+              <th scope="col">Modificar/Eliminar</th>
+
             </tr>
-          <?php } ?>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+
+            <?php
+            $where = "";
+            #consutal
+
+            if (!empty($_POST)) {
+              $valor = $_POST['buscar'];
+              if (!empty($valor)) {
+                $where = "WHERE Nombre_usuario LIKE '%$valor%'";
+              }
+            }
+            $consulta = "SELECT * FROM usuario $where";
+
+            # variable conexion y consulta
+            $resultado =  mysqli_query($conexion, $consulta);
+
+            while ($row = mysqli_fetch_assoc($resultado)) {
+
+            ?>
+
+              <tr>
+                <td><?php echo $row['Run_usuario'] ?></td>
+                <td><?php echo $row['Nombre_usuario'] ?></td>
+                <td><?php echo $row['Correo_electronico'] ?></td>
+                <td>
+                  <a href="editar_usuario.php?Run_usuario=<?php echo $row['Run_usuario'] ?>">
+                    <span class="material-icons text-dark fs-4 ms-2">
+                      edit
+                    </span>
+                  </a>
+                  <a href="eliminar_usuario.php?Run_usuario=<?php echo $row['Run_usuario'] ?>">
+                    <span class="material-icons text-dark fs-4 ms-4">
+                      delete
+                    </span>
+                  </a>
+
+                </td>
+              </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-3 mt-4 ">
+        <form class="y-5" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+          <input type="text" name="buscar" class="form-control col-6" placeholder="Busqueda por nombre"><br>
+          <input type="submit" name="buscando" value="Buscar" class="btn btn-secondary col-12"><br>
+        </form>
+      </div>
     </div>
-    <div class="col-3 mt-4 ">    
-                  <form class="y-5" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-                 <input type="text" name="buscar" class="form-control col-6" placeholder="Busqueda por nombre"><br>
-                  <input type="submit" name="buscando" value="Buscar" class="btn btn-secondary col-12"><br>
-                  </form>
-            </div> 
-  </div>
     </div>
     </div>
-  </main>
 
 
 

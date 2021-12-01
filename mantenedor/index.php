@@ -87,6 +87,9 @@ include('conexion.php');
                     <div class="my-3">
                         <span>Acceso a <a href="index2.php">mantenedores</a></span>
                     </div>
+                    <div class="my-3">
+                        <span>acceso a<a href="estadisticas.php">Estadisticas</a></span>
+                    </div>
                 </form>
         
                 <!--Login-->

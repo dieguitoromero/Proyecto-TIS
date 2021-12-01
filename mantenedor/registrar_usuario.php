@@ -1,11 +1,6 @@
 <?php
 require "conexion.php";
-session_start();
-$run = $_SESSION['user'];
-if ($run == null || $run == '') {
-  echo "Usted no tiene autorización";
-  die();
-}
+require "auth.php"
 ?>
 
 <!DOCTYPE html>
@@ -53,12 +48,8 @@ if ($run == null || $run == '') {
       </div>
     </div>
   </nav>
-
   <section class="container px-4 py-5 my-5" id="featured-3">
-
     <div class="container p-4">
-
-
       <div class="row">
         <div class="col-md-4 mx-auto">
           <div class="card card-body text-center">
