@@ -16,11 +16,9 @@ if($array['contar']>0 && $array['adm'] == 1 ){
 
 
 }
-if($array['contar']>0 && $array['adm'] == 0 ){
+if($array['contar']>0){
 
-    $_SESSION['user'] = $run_usu;
-    header('location: usuario/index2.php');
-
+echo ("La interfaz de usuarios aun no esta terminada");
 
 }
 

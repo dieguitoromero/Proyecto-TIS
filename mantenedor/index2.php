@@ -1,6 +1,6 @@
 <?php
-require "auth.php";
-
+require "conexion.php";
+session_start();
 $run = $_SESSION['user'];
 if($run == null || $run == ''){
   echo "Usted no tiene autorización";
@@ -39,8 +39,8 @@ $row = mysqli_fetch_assoc($resultado);
       <div class="navbar justify-content-md-end me-5" id="navbarNav">
         <ul class="navbar-nav ">
          
-          <li class="nav-item ms-5 ">
-              <a class="btn btn-danger" href="salir.php">Cerrar sesion</a>
+          <li class="nav-item col-12 bg-danger border ">
+            <a class="nav-link active" href="salir.php">Cerrar sesion</a>
           </li>
         </ul>
       </div>
@@ -52,7 +52,7 @@ $row = mysqli_fetch_assoc($resultado);
     
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
 
-      <div class="feature col-4 border-dark">
+      <div class="feature col border-dark">
         <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
           <span class="material-icons fs-1 ">
             directions_car
@@ -65,7 +65,7 @@ $row = mysqli_fetch_assoc($resultado);
         </div>
       </div>
 
-      <div class="feature col-4 border-dark">
+      <div class="feature col border-dark">
         <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
           <span class="material-icons fs-1 ">
             account_circle
@@ -77,20 +77,6 @@ $row = mysqli_fetch_assoc($resultado);
           <button class="btn btn-danger col-9" onclick="location.href = 'registros_usuarios.php'" type="button">Ver</button>
         </div>
       </div>
-
-      <div class="feature col-4 border-dark">
-        <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
-          <span class="material-icons fs-1">
-            remove_red_eye
-          </span>
-        </div>
-        <h2>Registro ingreso</h2>
-        <p>Encontraras el registro completo de los ingresos registrados en la UCSC</p>
-        <div class="d-grid gap-2 d-md-block">
-          <button class="btn btn-danger col-9" onclick="location.href = 'registros_ingreso.php'" type="button">Ver</button>
-      </div>
-        
-      
 
 
 
