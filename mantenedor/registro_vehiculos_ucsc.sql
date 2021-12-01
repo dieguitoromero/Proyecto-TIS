@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2021 a las 01:12:56
+-- Tiempo de generación: 02-12-2021 a las 00:49:46
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -62,9 +62,16 @@ CREATE TABLE `contiene` (
 
 CREATE TABLE `departamento` (
   `id_departamento` int(11) NOT NULL,
-  `nombre_departamento` int(11) NOT NULL,
-  `fk_id_facultad` int(11) NOT NULL
+  `nombre_departamento` varchar(38) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `departamento`
+--
+
+INSERT INTO `departamento` (`id_departamento`, `nombre_departamento`) VALUES
+(1, 'Matemática y Física Aplicadas'),
+(2, 'Ingeniería Informática');
 
 -- --------------------------------------------------------
 
@@ -73,9 +80,21 @@ CREATE TABLE `departamento` (
 --
 
 CREATE TABLE `dispone` (
-  `id_departamento` int(11) NOT NULL,
-  `id_estacionamiento` int(11) NOT NULL
+  `fk_id_estacionamiento` int(11) NOT NULL,
+  `fk_id_departamento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `dispone`
+--
+
+INSERT INTO `dispone` (`fk_id_estacionamiento`, `fk_id_departamento`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(3, 1),
+(4, 1),
+(5, 1);
 
 -- --------------------------------------------------------
 
@@ -84,8 +103,8 @@ CREATE TABLE `dispone` (
 --
 
 CREATE TABLE `esta` (
-  `id_departamento` int(11) NOT NULL,
-  `id_facultdad` int(11) NOT NULL
+  `fk_id_departamento` int(11) NOT NULL,
+  `fk_id_facultad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -98,6 +117,23 @@ CREATE TABLE `estacionamiento` (
   `id_estacionamiento` int(11) NOT NULL,
   `estado` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `estacionamiento`
+--
+
+INSERT INTO `estacionamiento` (`id_estacionamiento`, `estado`) VALUES
+(1, b'1'),
+(2, b'1'),
+(3, b'0'),
+(4, b'1'),
+(5, b'0'),
+(6, b'0'),
+(7, b'0'),
+(8, b'0'),
+(9, b'0'),
+(10, b'0'),
+(11, b'0');
 
 -- --------------------------------------------------------
 
@@ -117,9 +153,17 @@ CREATE TABLE `estudiante` (
 --
 
 CREATE TABLE `facultad` (
-  `id_facultad` int(11) NOT NULL,
-  `nombre_facultad` varchar(30) NOT NULL
+  `id_faculdad` int(11) NOT NULL,
+  `nombre_facultad` varchar(38) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `facultad`
+--
+
+INSERT INTO `facultad` (`id_faculdad`, `nombre_facultad`) VALUES
+(1, 'Ingeniería'),
+(2, 'Ciencias Económicas y Administrativo');
 
 -- --------------------------------------------------------
 
@@ -130,9 +174,17 @@ CREATE TABLE `facultad` (
 CREATE TABLE `ingresa` (
   `fecha` date NOT NULL,
   `fk_id_registro` int(11) NOT NULL,
-  `hora_ingreso` time NOT NULL,
-  `fk_patente_vehiculo` varchar(6) NOT NULL
+  `fk_Patente_vehiculo` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `ingresa`
+--
+
+INSERT INTO `ingresa` (`fecha`, `fk_id_registro`, `fk_Patente_vehiculo`) VALUES
+('2021-11-27', 1, 'cses3a'),
+('2021-12-01', 2, 'XXYSVS'),
+('2021-12-01', 5, 'YYYSVS');
 
 -- --------------------------------------------------------
 
@@ -164,12 +216,32 @@ CREATE TABLE `pertenece` (
 
 CREATE TABLE `registro` (
   `id_registro` int(11) NOT NULL,
-  `fecha` date NOT NULL,
-  `hora_ingreso` int(11) NOT NULL,
-  `hora_salida` int(11) DEFAULT NULL,
-  `fk_patente_vehiculo` int(11) NOT NULL,
+  `hora_entrada` time NOT NULL,
+  `hora_salida` time DEFAULT NULL,
   `fk_id_estacionamiento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `registro`
+--
+
+INSERT INTO `registro` (`id_registro`, `hora_entrada`, `hora_salida`, `fk_id_estacionamiento`) VALUES
+(1, '02:56:35', '11:11:40', 1),
+(2, '10:40:44', '20:11:40', 2),
+(5, '10:40:56', '11:11:40', 3),
+(6, '10:40:56', NULL, 5);
+
+--
+-- Disparadores `registro`
+--
+DELIMITER $$
+CREATE TRIGGER `registro_AI` AFTER INSERT ON `registro` FOR EACH ROW UPDATE `estacionamiento` as es SET `estado`= 1 WHERE es.id_estacionamiento = NEW.fk_id_estacionamiento
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `registro_AU` AFTER UPDATE ON `registro` FOR EACH ROW UPDATE `estacionamiento` SET `estado`= 0 WHERE new.fk_id_estacionamiento = id_estacionamiento
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -206,7 +278,7 @@ INSERT INTO `usuario` (`Run_usuario`, `Nombre_usuario`, `Correo_electronico`, `t
 (19909354, 'kast', 'apinto@ing.ucsc.c', 'alumno', '', b'0'),
 (19909951, 'kast', 'apinto@ing.ucsc.c', 'funcionario', '', b'0'),
 (19909954, 'kast ', 'correo@gmail.com', 'carrier', '1234', b'0'),
-(19909955, 'Alexis Pinta', 'apinto@ing.ucsc.c', '', '', b'0'),
+(19909955, 'Alexis Pinto', 'apinto@ing.ucsc.c', '', '1234', b'0'),
 (109394985, 'kast', 'apinto@ing.ucsc.c', 'personal', '', b'0');
 
 -- --------------------------------------------------------
@@ -230,7 +302,10 @@ CREATE TABLE `vehiculo` (
 
 INSERT INTO `vehiculo` (`Patente_vehiculo`, `Marca_vehiculo`, `Modelo_vehiculo`, `tipo_vehiculo`, `Descripcion`, `fk_run_usuario`) VALUES
 ('cses3a', 'porche', 've3', 'motocicleta', '', 13909954),
-('cxesaa', 'porche', 've3', 'Automovil', 'mea vola lima', 13909954);
+('cxesaa', 'porche', 've3', 'Automovil', 'mea vola lima', 13909954),
+('XXE2VS', 'bugatti', '', 'Ws', 'automovil', 19909955),
+('XXYSVS', 'bugatti', '', 'xs', 'automovil', 19909955),
+('YYYSVS', 'Ferrari', 'V3', 'automovil', '', 19909955);
 
 --
 -- Índices para tablas volcadas
@@ -260,24 +335,21 @@ ALTER TABLE `contiene`
 -- Indices de la tabla `departamento`
 --
 ALTER TABLE `departamento`
-  ADD PRIMARY KEY (`id_departamento`),
-  ADD KEY `fk_id_facultad` (`fk_id_facultad`);
+  ADD PRIMARY KEY (`id_departamento`);
 
 --
 -- Indices de la tabla `dispone`
 --
 ALTER TABLE `dispone`
-  ADD PRIMARY KEY (`id_departamento`),
-  ADD UNIQUE KEY `id_departamento` (`id_departamento`),
-  ADD UNIQUE KEY `id_departamento_2` (`id_departamento`),
-  ADD KEY `id_estacionamiento` (`id_estacionamiento`);
+  ADD KEY `fk_id_estacionamiento` (`fk_id_estacionamiento`),
+  ADD KEY `fk_id_departamento` (`fk_id_departamento`);
 
 --
 -- Indices de la tabla `esta`
 --
 ALTER TABLE `esta`
-  ADD PRIMARY KEY (`id_departamento`),
-  ADD KEY `id_facultdad` (`id_facultdad`);
+  ADD KEY `fk_id_departamento` (`fk_id_departamento`),
+  ADD KEY `fk_id_facultad` (`fk_id_facultad`);
 
 --
 -- Indices de la tabla `estacionamiento`
@@ -296,14 +368,14 @@ ALTER TABLE `estudiante`
 -- Indices de la tabla `facultad`
 --
 ALTER TABLE `facultad`
-  ADD PRIMARY KEY (`id_facultad`);
+  ADD PRIMARY KEY (`id_faculdad`);
 
 --
 -- Indices de la tabla `ingresa`
 --
 ALTER TABLE `ingresa`
-  ADD PRIMARY KEY (`fk_id_registro`),
-  ADD KEY `fk_patente_vehiculo` (`fk_patente_vehiculo`);
+  ADD KEY `fk_Patente_vehiculo` (`fk_Patente_vehiculo`),
+  ADD KEY `fk_id_registro` (`fk_id_registro`);
 
 --
 -- Indices de la tabla `personal`
@@ -324,7 +396,6 @@ ALTER TABLE `pertenece`
 --
 ALTER TABLE `registro`
   ADD PRIMARY KEY (`id_registro`),
-  ADD KEY `fk_patente_vehiculo` (`fk_patente_vehiculo`),
   ADD KEY `fk_id_estacionamiento` (`fk_id_estacionamiento`);
 
 --
@@ -352,22 +423,28 @@ ALTER TABLE `vehiculo`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `departamento`
+--
+ALTER TABLE `departamento`
+  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `estacionamiento`
 --
 ALTER TABLE `estacionamiento`
-  MODIFY `id_estacionamiento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_estacionamiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT de la tabla `ingresa`
+-- AUTO_INCREMENT de la tabla `facultad`
 --
-ALTER TABLE `ingresa`
-  MODIFY `fk_id_registro` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `facultad`
+  MODIFY `id_faculdad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `id_registro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_registro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
@@ -383,22 +460,22 @@ ALTER TABLE `carrir`
 -- Filtros para la tabla `contiene`
 --
 ALTER TABLE `contiene`
-  ADD CONSTRAINT `contiene_ibfk_1` FOREIGN KEY (`id_facultad`) REFERENCES `facultad` (`id_facultad`),
-  ADD CONSTRAINT `contiene_ibfk_2` FOREIGN KEY (`id_carrera`) REFERENCES `carrera` (`id_carrera`);
+  ADD CONSTRAINT `contiene_ibfk_2` FOREIGN KEY (`id_carrera`) REFERENCES `carrera` (`id_carrera`),
+  ADD CONSTRAINT `contiene_ibfk_3` FOREIGN KEY (`id_facultad`) REFERENCES `facultad` (`id_faculdad`);
 
 --
 -- Filtros para la tabla `dispone`
 --
 ALTER TABLE `dispone`
-  ADD CONSTRAINT `dispone_ibfk_1` FOREIGN KEY (`id_estacionamiento`) REFERENCES `estacionamiento` (`id_estacionamiento`),
-  ADD CONSTRAINT `dispone_ibfk_2` FOREIGN KEY (`id_departamento`) REFERENCES `departamento` (`id_departamento`);
+  ADD CONSTRAINT `dispone_ibfk_1` FOREIGN KEY (`fk_id_departamento`) REFERENCES `departamento` (`id_departamento`),
+  ADD CONSTRAINT `dispone_ibfk_2` FOREIGN KEY (`fk_id_estacionamiento`) REFERENCES `estacionamiento` (`id_estacionamiento`);
 
 --
 -- Filtros para la tabla `esta`
 --
 ALTER TABLE `esta`
-  ADD CONSTRAINT `esta_ibfk_1` FOREIGN KEY (`id_facultdad`) REFERENCES `facultad` (`id_facultad`),
-  ADD CONSTRAINT `esta_ibfk_2` FOREIGN KEY (`id_departamento`) REFERENCES `departamento` (`id_departamento`);
+  ADD CONSTRAINT `esta_ibfk_1` FOREIGN KEY (`fk_id_facultad`) REFERENCES `facultad` (`id_faculdad`),
+  ADD CONSTRAINT `esta_ibfk_2` FOREIGN KEY (`fk_id_departamento`) REFERENCES `departamento` (`id_departamento`);
 
 --
 -- Filtros para la tabla `estudiante`
@@ -411,7 +488,7 @@ ALTER TABLE `estudiante`
 --
 ALTER TABLE `ingresa`
   ADD CONSTRAINT `ingresa_ibfk_1` FOREIGN KEY (`fk_id_registro`) REFERENCES `registro` (`id_registro`),
-  ADD CONSTRAINT `ingresa_ibfk_2` FOREIGN KEY (`fk_patente_vehiculo`) REFERENCES `vehiculo` (`Patente_vehiculo`);
+  ADD CONSTRAINT `ingresa_ibfk_2` FOREIGN KEY (`fk_Patente_vehiculo`) REFERENCES `vehiculo` (`Patente_vehiculo`);
 
 --
 -- Filtros para la tabla `personal`
