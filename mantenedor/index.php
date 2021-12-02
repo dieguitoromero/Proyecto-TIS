@@ -61,6 +61,8 @@ include('conexion.php');
 
                 <h2 class="text-center fw-bold py-5">Bienvenido</h2>
                 
+                
+                
                 <!--Login-->
 
                 <form action="loguear.php" method="POST">
@@ -68,7 +70,6 @@ include('conexion.php');
                         <label for="run" class="form-label">Run</label>
                         <input class="form-control" type="texto" name="run">
                     </div>
-
                     <div class="mb-4">
                         <label for="contraseña" class="form-label">Contraseña</label>
                         <input class="form-control" type="password" name="contraseña">
@@ -88,7 +89,16 @@ include('conexion.php');
                         <span>Acceso a <a href="index2.php">mantenedores</a></span>
                     </div>
                     <div class="my-3">
-                        <span>acceso a<a href="estadisticas.php">Estadisticas</a></span>
+                        <span>acceso a <a href="estadisticas.php">Estadisticas</a></span>
+                    </div>
+                    <div>
+                        <span>acceso a <a href="generar_informe.php">informe</a></span>
+                    </div>
+                    <div>
+                        <span>acceso a <a href="reclamo.php">reclamo</a></span>
+                    </div>
+                    <div>
+                        <span>acceso a <a href="pruebaQR.php">qr</a></span>
                     </div>
                 </form>
         

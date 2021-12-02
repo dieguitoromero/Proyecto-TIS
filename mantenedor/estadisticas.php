@@ -32,15 +32,12 @@ require "conexion.php";
             </button>
             <div class="collapse navbar-collapse justify-content-md-end me-5" id="navbarNav">
                 <ul class="navbar-nav ">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index2.php">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="registros_vehiculos.php">Registros vehiculos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="Registros_usuarios.php">Registro usuario</a>
-                    </li>
+                    <nav aria-label="breadcrumb me-5 ">
+                        <ol class="breadcrumb ">
+                            <li class="breadcrumb-item mt-2"><a href="index2.php">Administrador</a></li>
+                            <li class="breadcrumb-item active mt-2 me-5">Estadisticos</li>
+                        </ol>
+                    </nav>
 
                     <li class="nav-item bg-danger border ">
                         <a class="nav-link active" href="salir.php">Cerrar sesion</a>
@@ -50,31 +47,33 @@ require "conexion.php";
         </div>
     </nav>
     <div class="contariner-fluid">
+        <button type="button" class="btn btn-primary active ms-4 mt-5" onclick="location.href = 'reporte_pdf.php'" data-bs-toggle="button" autocomplete="off" aria-pressed="true">Imprimir pdf
+            <span class="material-icons">
+                picture_as_pdf
+            </span>
+        </button>
+        <button type="button" class="btn btn-success active ms-5 mt-5" onclick="location.href = 'reporte_excel.php'" data-bs-toggle="button" autocomplete="off" aria-pressed="true">Imprimir excel
+            <span class="material-icons">
+                description
+            </span>
+        </button><br><br>
         <div class="container-fluid row">
             <div class="table-responsive col-5 mt-5">
                 <table class="table table-striped table-sm">
                     <thead>
                         <tr>
 
-                            <th scope="col">Run</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Correo electronico</th>
+                            <th scope="col">ID registro</th>
+                            <th scope="col">Patente Vehiculo</th>
+                            <th scope="col">Fecha de ingreso</th>
 
                         </tr>
                     </thead>
                     <tbody>
 
                         <?php
-                        $where = "";
-                        #consutal
 
-                        if (!empty($_POST)) {
-                            $valor = $_POST['buscar'];
-                            if (!empty($valor)) {
-                                $where = "WHERE Nombre_usuario LIKE '%$valor%'";
-                            }
-                        }
-                        $consulta1 = "SELECT * FROM usuario $where";
+                        $consulta1 = "SELECT * FROM ingresa";
 
                         # variable conexion y consulta1
                         $resultado =  mysqli_query($conexion, $consulta1);
@@ -84,11 +83,11 @@ require "conexion.php";
                         ?>
 
                             <tr>
-                                <td><?php echo $row['Run_usuario'] ?></td>
-                                <td><?php echo $row['Nombre_usuario'] ?></td>
-                                <td><?php echo $row['Correo_electronico'] ?></td>
+                                <td><?php echo $row['fk_id_registro'] ?></td>
+                                <td><?php echo $row['fk_Patente_vehiculo'] ?></td>
+                                <td><?php echo $row['fecha'] ?></td>
                                 <td>
-                                    <a href="grafico.php?patente_vehiculo=<?php echo $row['Run_usuario'] ?>">
+                                    <a href="grafico.php?c=<?php echo $row['fk_Patente_vehiculo'] ?>">
                                         <span class="material-icons text-dark fs-4 ms-2">
                                             arrow_circle_right
                                         </span>
@@ -101,101 +100,110 @@ require "conexion.php";
             </div>
             <?php
 
-            $consulta2 = "SELECT * FROM registro";
+            $consulta2 = "SELECT * FROM ingresa";
             $resultado2 =  mysqli_query($conexion, $consulta2);
-            
-            
+
             while ($row2 = mysqli_fetch_assoc($resultado2)) {
 
                 if ($row2['fecha'] >= '2021-01-1' && $row2['fecha'] < '2021-02-1') {
                     $enero += 1;
-                }else
+                } else
                 if ($row2['fecha'] >= '2021-02-1' && $row2['fecha'] < '2021-03-1') {
                     $febrero +=  1;
-                }else
+                } else
                 if ($row2['fecha'] >= '2021-03-1' && $row2['fecha'] < '2021-04-1') {
                     $marzo += 1;
-                }else
+                } else
                 if ($row2['fecha'] >= '2021-04-1' && $row2['fecha'] < '2021-05-1') {
                     $abril += 1;
-                }else
+                } else
                 if ($row2['fecha'] >= '2021-05-1' && $row2['fecha'] < '2021-06-1') {
                     $mayo += 1;
-                }else
+                } else
                 if ($row2['fecha'] >= '2021-06-1' && $row2['fecha'] < '2021-07-1') {
                     $junio += 1;
-                }else
+                } else
                 if ($row2['fecha'] >= '2021-07-1' && $row2['fecha'] < '2021-08-1') {
                     $julio += 1;
-                }else
+                } else
                 if ($row2['fecha'] >= '2021-08-1' && $row2['fecha'] < '2021-09-1') {
                     $agosto += 1;
-                }else
+                } else
                 if ($row2['fecha'] >= '2021-09-1' && $row2['fecha'] < '2021-10-1') {
-                    $Septiembre += 1;
-                }else
+                    $septiembre += 1;
+                } else
                 if ($row2['fecha'] >= '2021-10-1' && $row2['fecha'] < '2021-11-1') {
                     $octubre += 1;
-                }else
+                } else
                 if ($row2['fecha'] >= '2021-11-1' && $row2['fecha'] < '2021-12-1') {
                     $noviembre += 1;
-                }else
+                } else
                 if ($row2['fecha'] >= '2021-12-1' && $row2['fecha'] < '2022-01-1') {
                     $diciembre += 1;
                 }
-                
-            
-
             ?>
-            <div class="col-5 ms-5 mt-4 ">
-                <canvas id="myChart" width="400" height="400"></canvas>
-                <script>
-                    const ctx = document.getElementById('myChart').getContext('2d');
-                    const myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'octubre', 'Noviembre', 'Diciembre'],
-                            datasets: [{
-                                label: 'Grafico anual de ingresos',
-                                data: [<?php echo $enero ?>],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
+                <div class="col-5 ms-5 mt-4 ">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                    <script>
+                        const ctx = document.getElementById('myChart').getContext('2d');
+                        const myChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                                datasets: [{
+                                    label: 'Reporte grafico ingreso salida',
+                                    data: [],
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
                                 }
                             }
-                        }
-                    });
-                </script>
-            </div><?php } ?>
+                        });
+                    </script>
+                </div><?php } ?>
         </div>
-
-    </div>
-
     </div>
     </div>
+    </div>
 
+    <script>
+        async function traerDatos() {
+            const url = 'listar.php';
+            const response = await fetch(url);
+            const datapoints = await response.json();
+            console.log(datapoints);
+            return datapoints;
+        };
+        traerDatos().then(datapoints => {
+            const mes = datapoints.data[0].map(
+                function(index) {
+                    return index.date;
+                }
+            )
+        });
+    </script>
 
 </body>
 
 </html>
-
