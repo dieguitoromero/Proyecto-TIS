@@ -52,7 +52,7 @@ if ($run == null || $run == '') {
 
     <div class="row ">
 
-      <div class="feature col-6 border-dark">
+      <div class="feature col-6 mt-5 border-dark">
         <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
           <span class="material-icons fs-1 ">
             directions_car
@@ -65,7 +65,7 @@ if ($run == null || $run == '') {
         </div>
       </div>
 
-      <div class="feature col-6 border-dark">
+      <div class="feature col-6 mt-5 border-dark">
         <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
           <span class="material-icons fs-1 ">
             account_circle
@@ -78,7 +78,7 @@ if ($run == null || $run == '') {
         </div>
       </div>
 
-      <div class="feature col-6 border-dark">
+      <div class="feature col-6 mt-5 border-dark">
         <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
           <span class="material-icons fs-1">
             remove_red_eye
@@ -89,8 +89,9 @@ if ($run == null || $run == '') {
         <div class="d-grid gap-2 d-md-block">
           <button class="btn btn-danger col-9" onclick="location.href = 'registros_ingreso.php'" type="button">Ver</button>
         </div>
+        </div>
 
-        <div class="feature col-12 border-dark">
+        <div class="feature col-6 mt-5 border-dark">
           <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
             <span class="material-icons fs-1 ">
               bar_chart
