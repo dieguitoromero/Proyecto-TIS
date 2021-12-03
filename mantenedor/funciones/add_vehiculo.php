@@ -1,6 +1,6 @@
 <?php
 
-require("conexion.php");
+require("../conexion.php");
 
 $patente = $_POST["patente"];
 $marca = $_POST["marca"];
@@ -17,4 +17,4 @@ if (!$resultado) {
 }
 
 echo "Guardado";
-header('location: registros_vehiculos.php');
+header('location: ../registros_vehiculos.php');

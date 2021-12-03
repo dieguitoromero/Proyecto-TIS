@@ -1,5 +1,5 @@
 <?php
-require "auth.php";
+require "conexion.php";
 ?>
 
 <!DOCTYPE html>
@@ -16,16 +16,12 @@ require "auth.php";
   <!-- datatables-->
   <link href="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet" type="text/css">
   <script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 
-  ><!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
-
-  <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
-  
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+  
 
   <script> 
 
@@ -46,13 +42,15 @@ require "auth.php";
               {"data":"hora_entrada"},
               {"data":"hora_salida"},
               {"data":"fk_id_estacionamiento"}
+
           ]
+        
+        
         });
 
       } );
             
 </script> 
-
 
       
 
@@ -60,7 +58,7 @@ require "auth.php";
 </head>
 
 <body>
-
+ 
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
@@ -91,41 +89,66 @@ require "auth.php";
   </nav>
 
 
-  <main class="col-md-9 mx-auto  px-md-4 mt-5">
+  <main class="container-fluid ">
+    
+    <div class="row mx-5 mt-5">
+    <h1>Estacionamientos disponible</h1>
+      <div class="col-md-6 ms-5 mb-5 me-5">
+
+        <table class="table table-striped" id="tabla">
+          <thead>
+              <tr>
+              <th scope="col">Departamento</th>
+              <th scope="col">Disponibles</th>
+              </tr>
+          </thead>
+          <tbody>
+              <?php
+                  ## mostras nustros ultimos ingreso
+                  $consulta = "SELECT de.nombre_departamento, COUNT(esta.id_estacionamiento) as disponible 
+                  from departamento de LEFT JOIN dispone dis ON (de.id_departamento = dis.fk_id_departamento) 
+                  LEFT JOIN estacionamiento esta ON esta.id_estacionamiento = dis.fk_id_estacionamiento 
+                   WHERE esta.estado = 0 
+                   GROUP BY de.nombre_departamento";
+                  # variable conexion y consulta
+                  $resultado =  mysqli_query($conexion, $consulta);
+                  
+                  if(!$resultado){
+                  echo "<p > estamos presentando error </p>";
+                  }
+                  while ($row = mysqli_fetch_assoc($resultado)) {
+
+              ?>
+
+                  <tr class="text_center">
+                  <td><?php echo $row['nombre_departamento'] ?></td>
+                  <td><?php echo $row['disponible'] ?></td>
+                  </tr>
 
 
-    <div class="row ms-2">
-      <div class="col-md-8 col-sm-8">
-        <h2>Registros de ingreso</h2>
+              <?php } ?>
+          </tbody>
+        </table>
+
       </div>
+
+      <div class="col-md-4 me-5">
+        <canvas id="myChart" width="400" height="400"></canvas>
+      </div >
+      <script src="estacio_disponible.js"></script>
+
     </div>
-
-   <div class="container-fluid row justify-content-center">
-    <div class="table-responsive col-9 mt-3 ">
-
-      <table class="table table-striped table-sm "  id="r_tabla" id="r_tabla2">
-        <thead>
-          <tr>
-
-            <th scope="col">id_registro</th> 
-            <th scope="col">Patente</th>
-            <th scope="col">fecha ingreso</th>
-            <th scope="col">hora entrada</th>
-            <th scope="col">hora salida</th>
-            <th scope="col">estacionamiento</th>
-            <th></th>
-          
-
-          </tr>
-        </thead>
-      </table>
-    </div>
-  </div>
-            
-  
   </main>
-
+  <script> 
+    var tabla = document.querySelector("#tabla");
+    var  dataTable = new DataTable(tabla);                  
+                
+  </script>
      
 </body>
 
 </html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.1/chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.1/chart.esm.min.js"></script>

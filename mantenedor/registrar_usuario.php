@@ -55,7 +55,7 @@ require "auth.php"
           <div class="card card-body text-center">
 
             <h2 class="mb-5">Registrar</h2>
-            <form action="add_usuario.php" method="POST">
+            <form action="funcion/add_usuario.php" method="POST">
 
               <div class="form-group mb-2">
                 <input type="text" name='run' value="" class="form-control" placeholder="Run usuario">
