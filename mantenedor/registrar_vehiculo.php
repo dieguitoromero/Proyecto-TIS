@@ -56,8 +56,7 @@ require "auth.php"
         <div class="col-md-4 mx-auto">
           <div class="card card-body">
             <h2 class="mb-5">Registrar Vehiculo</h2>
-            <form action="funciones/add_vehiculo.php" method="POST">
-
+            <form action="add_vehiculo.php" method="POST">
               <div class="form-group mb-2">
                 <input type="text" id="patente" name='patente' value="" class="form-control" placeholder="Patente vehiculo">
               </div>
@@ -82,37 +81,38 @@ require "auth.php"
                   <option>Furgoneta</option>
                 </select>
               </div>
-              
+
               <div class="form-group mb-2 ">
                 <input type="text" name='desarrollo' value="" class="form-control" placeholder="Detalle">
               </div>
-              <button class="btn btn-danger col-12" type='submit' id='registrar' >
+              <button class="mb-2 btn btn-danger col-12" type='submit' id='registrar'>
                 Registar
               </button>
-              
+
             </form>
             <button onclick='generadorQr()'>qr</button>
+            <div class="row mx-auto mt-3 img-fluid">
+              <div id="qrcode"></div>
+            </div>
+
           </div>
+
         </div>
       </div>
-      
+
     </div>
   </section>
-  <div id="qrcode">
-    Aqui deberia estar la imagen Qr
-  </div>
-
+  
 </body>
+<script src="qrcode.min.js"></script>
+<script>
+  var qrdata = document.getElementById('patente');
+  var qrcode = new QRCode(document.getElementById('qrcode'));
 
-  <script>
-    var qrdata = document.getElementById('patente');
-    var qrcode= new QRCode(documennt.getElementById('qrcode'));
-    
-    function generadorQr(){
-      var data = qrdata.value;
-      qrcode.makeCode(data);
-    }
-
-  </script>
+  function generadorQr() {
+    var data = qrdata.value;
+    qrcode.makeCode(data);
+  }
+</script>
 
 </html>
