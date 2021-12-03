@@ -85,21 +85,11 @@ include('conexion.php');
                     <div class="my-3">
                         <span>No tienes cuenta? <a href="registrar.html">Regístrate</a></span>
                     </div>
+                    
                     <div class="my-3">
-                        <span>Acceso a <a href="index2.php">mantenedores</a></span>
+                        <span>Acceso a <a href="reclamo.php">Reclamo</a></span>
                     </div>
-                    <div class="my-3">
-                        <span>acceso a <a href="estadisticas.php">Estadisticas</a></span>
-                    </div>
-                    <div>
-                        <span>acceso a <a href="generar_informe.php">informe</a></span>
-                    </div>
-                    <div>
-                        <span>acceso a <a href="reclamo.php">reclamo</a></span>
-                    </div>
-                    <div>
-                        <span>acceso a <a href="pruebaQR.php">qr</a></span>
-                    </div>
+                    
                 </form>
         
                 <!--Login-->
