@@ -18,13 +18,39 @@ require "conexion.php";
   <script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-  <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+  
+
+  <script> 
+
+    $(document).ready( function () {
+        $('#r_tabla').DataTable({
+
+          'ajax':{
+
+            "method": "POST",
+            "url": "funciones/listar_ingreso.php"          
+          },
+
+          "columns":[
+
+              {"data":"id_registro"},
+              {"data":"fk_Patente_vehiculo"},
+              {"data":"fecha"},
+              {"data":"hora_entrada"},
+              {"data":"hora_salida"},
+              {"data":"fk_id_estacionamiento"}
+
+          ]
+        
+        
+        });
+
+      } );
+            
+</script> 
 
       
 
@@ -122,7 +148,6 @@ require "conexion.php";
 </body>
 
 </html>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.1/chart.min.js"></script>

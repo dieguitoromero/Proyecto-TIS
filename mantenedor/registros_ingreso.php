@@ -46,15 +46,13 @@ require "../auth.php";
               {"data":"hora_entrada"},
               {"data":"hora_salida"},
               {"data":"fk_id_estacionamiento"}
-
           ]
-        
-        
         });
 
       } );
             
 </script> 
+
 
       
 
@@ -105,7 +103,7 @@ require "../auth.php";
    <div class="container-fluid row justify-content-center">
     <div class="table-responsive col-9 mt-3 ">
 
-      <table class="table table-striped table-sm "  id="r_tabla">
+      <table class="table table-striped table-sm "  id="r_tabla" id="r_tabla2">
         <thead>
           <tr>
 

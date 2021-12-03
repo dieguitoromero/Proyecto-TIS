@@ -2,15 +2,14 @@
 require "auth.php";
 
 $run = $_SESSION['user'];
-if($run == null || $run == ''){
+if ($run == null || $run == '') {
   echo "Usted no tiene autorización";
   die();
-}
-else {
-$consulta = "SELECT * FROM `usuario` WHERE Run_usuario = '$run'";
-# variable conexion y consulta
-$resultado =  mysqli_query($conexion, $consulta);
-$row = mysqli_fetch_assoc($resultado);
+} else {
+  $consulta = "SELECT * FROM `usuario` WHERE Run_usuario = '$run'";
+  # variable conexion y consulta
+  $resultado =  mysqli_query($conexion, $consulta);
+  $row = mysqli_fetch_assoc($resultado);
 }
 ?>
 
@@ -38,21 +37,22 @@ $row = mysqli_fetch_assoc($resultado);
       <a class="navbar-brand" href="index2.html"><img style=" height:50px;" src="imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
       <div class="navbar justify-content-md-end me-5" id="navbarNav">
         <ul class="navbar-nav ">
-         
+
           <li class="nav-item ms-5 ">
-              <a class="btn btn-danger" href="salir.php">Cerrar sesion</a>
+            <a class="btn btn-danger" href="salir.php">Cerrar sesion</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+
   <section class="container px-4 py-5 my-5 " id="featured-3">
     <h1 class="pb-2 border-bottom text-center">Mantenedores</h1><br>
-    <p class="text-center fs-5">Bienvenido <?php echo $row['Nombre_usuario']?></p>
-    
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+    <p class="text-center fs-5">Bienvenido <?php echo $row['Nombre_usuario'] ?></p>
 
-      <div class="feature col-4 border-dark">
+    <div class="row ">
+
+      <div class="feature col-6 border-dark">
         <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
           <span class="material-icons fs-1 ">
             directions_car
@@ -65,7 +65,7 @@ $row = mysqli_fetch_assoc($resultado);
         </div>
       </div>
 
-      <div class="feature col-4 border-dark">
+      <div class="feature col-6 border-dark">
         <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
           <span class="material-icons fs-1 ">
             account_circle
@@ -78,7 +78,7 @@ $row = mysqli_fetch_assoc($resultado);
         </div>
       </div>
 
-      <div class="feature col-4 border-dark">
+      <div class="feature col-6 border-dark">
         <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
           <span class="material-icons fs-1">
             remove_red_eye
@@ -88,13 +88,23 @@ $row = mysqli_fetch_assoc($resultado);
         <p>Encontraras el registro completo de los ingresos registrados en la UCSC</p>
         <div class="d-grid gap-2 d-md-block">
           <button class="btn btn-danger col-9" onclick="location.href = 'registros_ingreso.php'" type="button">Ver</button>
+        </div>
+
+        <div class="feature col-12 border-dark">
+          <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
+            <span class="material-icons fs-1 ">
+              bar_chart
+            </span>
+          </div>
+          <h2>Visualizar Estadisticas</h2>
+          <p>Encontraras el registro estadistico completo de entrada y salidas</p>
+          <div class="d-grid gap-2 d-md-block">
+            <button class="btn btn-danger col-9" onclick="location.href = 'estadisticas.php'" type="button">Ver</button>
+          </div>
+        </div>
+
+
       </div>
-        
-      
-
-
-
-    </div>
   </section>
 
 </body>
