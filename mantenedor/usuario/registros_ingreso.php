@@ -17,7 +17,7 @@ require "../auth.php";
   <link href="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet" type="text/css">
   <script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>
 
-  ><!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 
   <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -35,7 +35,7 @@ require "../auth.php";
           'ajax':{
 
             "method": "POST",
-            "url": "funciones/listar_ingreso.php"          
+            "url": "listar_ingreso.php"          
           },
 
           "columns":[
@@ -69,7 +69,7 @@ require "../auth.php";
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index2.php"><img style="height:50px;" src="imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
+      <a class="navbar-brand" href="index2.php"><img style="height:50px;" src="../imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -78,8 +78,8 @@ require "../auth.php";
         <ul class="navbar-nav ">
         <nav aria-label="breadcrumb me-5 ">
             <ol class="breadcrumb ">
-              <li class="breadcrumb-item mt-2"><a href="index2.php">Administrador</a></li>
-              <li class="breadcrumb-item active mt-2">Página actual</li>
+              <li class="breadcrumb-item mt-2"><a href="index2.php">Inicio</a></li>
+              <li class="breadcrumb-item active mt-2">Mis registros</li>
             </ol>
           </nav>
 
@@ -97,7 +97,7 @@ require "../auth.php";
 
 
     <div class="row ms-2">
-      <div class="col-md-8 col-sm-8">
+      <div class="col-md-8 col-sm-8 mb-5">
         <h2>Registros de ingreso</h2>
       </div>
     </div>

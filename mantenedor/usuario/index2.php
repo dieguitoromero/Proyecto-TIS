@@ -43,21 +43,43 @@ require "../auth.php";
     <h1 class="pb-2 border-bottom text-center">Bienvenido <?php echo $row['Nombre_usuario']?></h1><br>
    
     
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2 mb-5">
+    <div class="row g-4 py-5  mb-5">
 
-      <div class="feature col border-dark ">
-        <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
-          <span class="material-icons fs-1 ">
+
+      <div class="card col-md-4">
+          <span class="material-icons fs-1 ms-3 ">
             directions_car
           </span>
-        </div>
-        <h2>Mis vehiculos</h2>
-        <p>Encontraras el registro completo de los vehiculos registrados en la UCSC</p>
-        <div class="d-grid gap-2 d-md-block">
-          <button class="btn btn-danger col-9" onclick="location.href = 'miregistros_vehiculos.php'" type="button">Ver</button>
+        <div class="card-body">
+          <h2 class="card-title">Mis vehiculos</h2>
+          <p class="card-text mt-5">Encontraras el registro completo de tus vehiculos registrados en la UCSC</p>
+          <a href="miregistros_vehiculos.php" class="btn btn-danger ">Ver mis vehiculos</a>
         </div>
       </div>
 
+      
+
+      <div class="card col-md-4">
+          <span class="material-icons fs-1 ms-3">
+            remove_red_eye
+          </span>
+        <div class="card-body">
+          <h2 class="card-title">Mis ingresos</h2>
+          <p class="card-text mt-5 mb-4">Encontraras tus ingresos a los estacionamientos del Campus San Andrés de la UCSC</p>
+          <a href="registros_ingreso.php" class="btn btn-danger stretched-link">Ver mis ingresos</a>
+        </div>
+      </div>
+
+      <div class="card col-md-4">
+      <span class="material-icons fs-1 ms-3 mt-1">
+        event_available
+      </span>
+        <div class="card-body">
+          <h2 class="card-title">Estacionamiento disponible</h2>
+          <p class="card-text mb-3">Encontraras los estacionamientos disponibles en el Campus San Andrés de la UCSC</p>
+          <a href="disponibilidad_estac.php" class="btn btn-danger stretched-link mt-1">Ver Estacionamiento</a>
+        </div>
+      </div>
 
 
 
@@ -114,6 +136,7 @@ require "../auth.php";
   </section>
   
   <script> 
+    
     var tabla = document.querySelector("#tabla");
     var  dataTable = new DataTable(tabla);                  
                 

@@ -1,6 +1,6 @@
 <?php
 
-    require("conexion.php");
+    require("../conexion.php");
      
     $run = $_POST["run"];
     $nombre = $_POST["nombre"];
@@ -17,4 +17,4 @@
 
     echo "guardado";
     
-    header('location: Registros_usuarios.php');
+    header('location: ../Registros_usuarios.php');

@@ -61,7 +61,7 @@ require "auth.php"
           <div class="card card-body">
 
             <h2 class="mb-5">Registrar Vehiculo</h2>
-            <form action="add_vehiculo.php" method="POST">
+            <form action="funciones/add_vehiculo.php" method="POST">
 
               <div class="form-group mb-2">
                 <input type="text" name='patente' value="" class="form-control" placeholder="Patente vehiculo">

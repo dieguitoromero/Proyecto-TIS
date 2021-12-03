@@ -1,10 +1,11 @@
 <?php
-    include("conexion.php");
+    include("../conexion.php");
 
-    $consulta = "SELECT id_registro, fk_Patente_vehiculo, fecha, hora_entrada, hora_salida, fk_id_estacionamiento
-                FROM usuario U RIGHT JOIN vehiculo ve ON (U.Run_usuario = ve.fk_Run_usuario) 
-                RIGHT JOIN ingresa ON (ve.Patente_vehiculo = ingresa.fk_Patente_vehiculo) 
-                RIGHT JOIN registro ON (ingresa.fk_id_registro = registro.id_registro)";
+    $consulta = "SELECT de.nombre_departamento, (COUNT(esta.id_estacionamiento)/(SELECT COUNT(*) FROM dispone))*100 as Promedio 
+                from departamento de LEFT JOIN dispone dis ON (de.id_departamento = dis.fk_id_departamento) 
+                LEFT JOIN estacionamiento esta ON esta.id_estacionamiento = dis.fk_id_estacionamiento 
+                 WHERE esta.estado = 0 
+                 GROUP BY de.nombre_departamento";
                 # variable conexion y consulta
                 $resultado =  mysqli_query($conexion, $consulta);
                 if(!$resultado){
