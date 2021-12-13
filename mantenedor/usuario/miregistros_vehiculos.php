@@ -1,6 +1,5 @@
 <?php
-require "../conexion.php";
-require "../auth.php"
+require "../conexion/auth.php"
 
 ?>
 
@@ -30,18 +29,20 @@ require "../auth.php"
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse justify-content-md-end me-5" id="navbarNav">
         <ul class="navbar-nav ">
-        <nav aria-label="breadcrumb me-5 ">
-            <ol class="breadcrumb ">
-              <li class="breadcrumb-item mt-2"><a href="index2.php">Inicio</a></li>
-              <li class="breadcrumb-item active mt-2" href="registros_ingreso.php">Registros ingreso</li>
-            </ol>
+
+          <nav aria-label="breadcrumb me-5 ">
+              <ol class="breadcrumb ">
+                <li class="breadcrumb-item mt-2"><a href="index2.php">Inicio</a></li>
+                <li class="breadcrumb-item active mt-2" href="registros_ingreso.php">Registros ingreso</li>
+              </ol>
           </nav>
 
-          <li class="nav-item ms-5">
-            <a class="btn btn-danger" href="../salir.php">Cerrar sesion</a>
-          </li>
+            <li class="nav-item ms-5">
+              <a class="btn btn-danger" href="../salir.php">Cerrar sesion</a>
+            </li>
 
         </ul>
       </div>
@@ -52,21 +53,13 @@ require "../auth.php"
   <main class="col-md-9 mx-auto  px-md-4 mt-5">
     
 
-    <?php if (isset($_SESSION['menssage'])) { ?>
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <?php $_SESSION['message'] ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    <?php session_unset();
-    } ?>
-
     <div class="row ms-2">
       <div class="col-md-8 col-sm-8">
         <h2>Registros de vehiculos</h2>
       </div>
       <div class="col-md-6  mt-1 col-sm-4">
 
-        <button type="button" class="btn btn-success active" onclick="location.href = '../registrar_vehiculo.php'" data-bs-toggle="button" autocomplete="off" aria-pressed="true">Agregar Vehiculo
+        <button type="button" class="btn btn-success active" onclick="location.href = 'registrar_vehiculo.php'" data-bs-toggle="button" autocomplete="off" aria-pressed="true">Agregar Vehiculo
           <span class="material-icons fs-6 ms-1 align-middle">
             add_circle
           </span>
@@ -82,7 +75,7 @@ require "../auth.php"
             <th scope="col">Marca</th>
             <th scope="col">Modelo</th>
             <th scope="col">Tipo vehiculo</th>
-            <th scope="col">Modificar/Eliminar</th>
+            <th scope="col">Modificar/ Elimina / Descargar QR</th>
           </tr>
         </thead>
         <tbody>
@@ -96,7 +89,9 @@ require "../auth.php"
           $resultado =  mysqli_query($conexion, $consulta);
 
           while ($row = mysqli_fetch_assoc($resultado)) {
+          
 
+          
           ?>
 
             <tr>
@@ -105,23 +100,30 @@ require "../auth.php"
               <td><?php echo $row['Modelo_vehiculo'] ?></td>
               <td><?php echo $row['tipo_vehiculo'] ?></td>
               <td>
-                <a href="../edit_vehiculo.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
+                <a class="me-4" href="../edit_vehiculo.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
                   <span class="material-icons text-dark fs-4 ms-4">
                     edit
                   </span>
                 </a>
 
-                <a href="../eliminar_vehiculo.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
+                <a class="me-4" href="../eliminar_vehiculo.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
                   <span class="material-icons text-dark fs-4 ms-4">
                     delete
                   </span>
                 </a>
 
+                <a href="qr_vehiculo.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
+                  <span class="material-icons">
+                    qr_code_2
+                  </span>
+                </a>
+
+
               </td>
             </tr>
 
 
-          <?php } ?>
+          <?php }?>
         </tbody>
       </table>
     </div>

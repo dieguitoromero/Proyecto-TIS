@@ -1,5 +1,5 @@
 <?php
-require("conexion.php");
+require("conexion/auth.php");
 
 if (isset($_GET['Run_usuario'])) {
 
@@ -10,9 +10,6 @@ if (isset($_GET['Run_usuario'])) {
     if (!$resultado) {
         die('Query failed');
     }
-
-    $_SESSION['message'] =  'Registro eliminado con exito';
-    $_SESSION['message'] = 'danger';
 
 
     header('location: Registros_usuarios.php');

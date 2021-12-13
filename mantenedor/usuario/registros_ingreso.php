@@ -1,5 +1,5 @@
 <?php
-require "../auth.php";
+require "../conexion/auth.php";
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ require "../auth.php";
           'ajax':{
 
             "method": "POST",
-            "url": "listar_ingreso.php"          
+            "url": "funciones/listar_ingreso.php"          
           },
 
           "columns":[

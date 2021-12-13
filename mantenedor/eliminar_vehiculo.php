@@ -1,5 +1,5 @@
 <?php
-require("conexion.php");
+require("conexion/auth.php");
 
 if (isset($_GET['Patente_vehiculo'])) {
 
@@ -11,9 +11,7 @@ if (isset($_GET['Patente_vehiculo'])) {
         die('Query failed' . $patente_vehicular);
     }
 
-    $_SESSION['message'] =  'Registro eliminado con exito';
-    $_SESSION['message'] = 'danger';
-
+  
 
     header('location: registros_vehiculos.php');
 }

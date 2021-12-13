@@ -1,5 +1,5 @@
 <?php
-require "../auth.php";
+require "../conexion/auth.php";
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ require "../auth.php";
   
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index2.html"><img style=" height:50px;" src="imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
+      <a class="navbar-brand" href="index2.html"><img style=" height:50px;" src="../imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
       <div class="navbar justify-content-md-end me-5" id="navbarNav">
         <ul class="navbar-nav ">
          
@@ -41,6 +41,8 @@ require "../auth.php";
     </div>
   </nav>
   <section class="container px-4 py-5 my-5 " id="featured-3">
+
+    <!-- realiza bienvenida -->
     <h1 class="pb-2 border-bottom text-center">Bienvenido <?php echo $row['Nombre_usuario']?></h1><br>
    
     
@@ -48,12 +50,12 @@ require "../auth.php";
 
 
       <div class="card col-md-4">
-          <span class="material-icons fs-1 ms-3 ">
-            directions_car
+          <span class="material-icons fs-1 ms-3 mt-1 ">
+            drive_eta
           </span>
         <div class="card-body">
           <h2 class="card-title">Mis vehiculos</h2>
-          <p class="card-text mt-5">Encontraras el registro completo de tus vehiculos registrados en la UCSC</p>
+          <p class="card-text mt-5">Encontraras el registro completo de tus vehiculos registrados en el Campus San Andrés de la UCSC</p>
           <a href="miregistros_vehiculos.php" class="btn btn-danger ">Ver mis vehiculos</a>
         </div>
       </div>

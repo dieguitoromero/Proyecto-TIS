@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require('conexion.php');
+require('conexion/conexion.php');
 
 $run_usu = $_POST['run'];
 $run_clave = $_POST['contraseña'];
@@ -12,10 +12,12 @@ $array = mysqli_fetch_array($consulta);
 if($array['contar']>0 && $array['adm'] == 1 ){
 
     $_SESSION['user'] = $run_usu;
-    header('location: index2.php');
+    $_SESSION['adm'] = $array['adm'];
+    header('location: admin/index2.php');
 
 
 }
+
 if($array['contar']>0 && $array['adm'] == 0 ){
 
     $_SESSION['user'] = $run_usu;
