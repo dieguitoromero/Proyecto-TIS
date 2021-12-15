@@ -2,7 +2,7 @@ $( document ).ready(function() {
     console.log( "ready!" );
     $.ajax({
     type: "GET",
-    url: "funciones/listar_estacionamiento.php",
+    url: "listar_estacionamiento.php",
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (data) {

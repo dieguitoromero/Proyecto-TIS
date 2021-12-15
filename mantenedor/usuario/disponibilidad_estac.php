@@ -106,7 +106,7 @@ require "../conexion/conexion.php";
       <div class="col-md-4 me-5">
         <canvas id="myChart" width="400" height="400"></canvas>
       </div >
-      <script src="js/estacionamiento_disponible.js"></script>
+      <script src="estacionamiento_disponible.js"></script>
      
     </div>
   </main>

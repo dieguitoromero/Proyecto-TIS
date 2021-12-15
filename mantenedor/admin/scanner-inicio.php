@@ -38,7 +38,6 @@
       });
 
       scanner.addListener('scan', function (content) {
-        console.log(content);
         document.getElementById('text').value=content;
         document.forms[0].submit();
       });
