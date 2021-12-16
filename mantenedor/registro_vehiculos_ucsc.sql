@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-12-2021 a las 00:49:46
+-- Tiempo de generación: 16-12-2021 a las 17:09:23
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -71,7 +71,11 @@ CREATE TABLE `departamento` (
 
 INSERT INTO `departamento` (`id_departamento`, `nombre_departamento`) VALUES
 (1, 'Matemática y Física Aplicadas'),
-(2, 'Ingeniería Informática');
+(2, 'Ingeniería Informática'),
+(6, 'comunicación historia y ciencias socia'),
+(7, 'educación'),
+(8, 'estudios teológicos y filosofía'),
+(9, 'medicina');
 
 -- --------------------------------------------------------
 
@@ -92,9 +96,28 @@ INSERT INTO `dispone` (`fk_id_estacionamiento`, `fk_id_departamento`) VALUES
 (1, 1),
 (2, 1),
 (3, 1),
-(3, 1),
 (4, 1),
-(5, 1);
+(5, 1),
+(6, 2),
+(7, 2),
+(8, 2),
+(9, 2),
+(10, 2),
+(11, 2),
+(12, 2),
+(21, 6),
+(22, 6),
+(23, 6),
+(24, 6),
+(25, 6),
+(13, 6),
+(14, 6),
+(15, 6),
+(16, 6),
+(17, 6),
+(18, 6),
+(19, 6),
+(20, 6);
 
 -- --------------------------------------------------------
 
@@ -125,15 +148,32 @@ CREATE TABLE `estacionamiento` (
 INSERT INTO `estacionamiento` (`id_estacionamiento`, `estado`) VALUES
 (1, b'1'),
 (2, b'1'),
-(3, b'0'),
+(3, b'1'),
 (4, b'1'),
-(5, b'0'),
+(5, b'1'),
 (6, b'0'),
 (7, b'0'),
 (8, b'0'),
 (9, b'0'),
 (10, b'0'),
-(11, b'0');
+(11, b'0'),
+(12, b'0'),
+(13, b'0'),
+(14, b'0'),
+(15, b'0'),
+(16, b'0'),
+(17, b'0'),
+(18, b'0'),
+(19, b'0'),
+(20, b'0'),
+(21, b'0'),
+(22, b'0'),
+(23, b'0'),
+(24, b'0'),
+(25, b'0'),
+(26, b'0'),
+(27, b'0'),
+(28, b'0');
 
 -- --------------------------------------------------------
 
@@ -184,7 +224,10 @@ CREATE TABLE `ingresa` (
 INSERT INTO `ingresa` (`fecha`, `fk_id_registro`, `fk_Patente_vehiculo`) VALUES
 ('2021-11-27', 1, 'cses3a'),
 ('2021-12-01', 2, 'XXYSVS'),
-('2021-12-01', 5, 'YYYSVS');
+('2021-12-01', 5, 'YYYSVS'),
+('2021-12-15', 6, '23s3qq'),
+('2021-12-15', 7, '23s3qq'),
+('2021-12-15', 8, '23s3qq');
 
 -- --------------------------------------------------------
 
@@ -229,11 +272,17 @@ INSERT INTO `registro` (`id_registro`, `hora_entrada`, `hora_salida`, `fk_id_est
 (1, '02:56:35', '11:11:40', 1),
 (2, '10:40:44', '20:11:40', 2),
 (5, '10:40:56', '11:11:40', 3),
-(6, '10:40:56', NULL, 5);
+(6, '13:12:50', '17:21:35', 5),
+(7, '18:55:04', '00:00:00', 5),
+(8, '18:56:12', '18:56:52', 6);
 
 --
 -- Disparadores `registro`
 --
+DELIMITER $$
+CREATE TRIGGER `registro_AD` BEFORE DELETE ON `registro` FOR EACH ROW UPDATE `estacionamiento` SET `estado`= 0 WHERE old.fk_id_estacionamiento = id_estacionamiento
+$$
+DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `registro_AI` AFTER INSERT ON `registro` FOR EACH ROW UPDATE `estacionamiento` as es SET `estado`= 1 WHERE es.id_estacionamiento = NEW.fk_id_estacionamiento
 $$
@@ -301,6 +350,7 @@ CREATE TABLE `vehiculo` (
 --
 
 INSERT INTO `vehiculo` (`Patente_vehiculo`, `Marca_vehiculo`, `Modelo_vehiculo`, `tipo_vehiculo`, `Descripcion`, `fk_run_usuario`) VALUES
+('23s3qq', 'porche', 'v3', 'Automovil', '', 19909954),
 ('cses3a', 'porche', 've3', 'motocicleta', '', 13909954),
 ('cxesaa', 'porche', 've3', 'Automovil', 'mea vola lima', 13909954),
 ('XXE2VS', 'bugatti', '', 'Ws', 'automovil', 19909955),
@@ -426,13 +476,13 @@ ALTER TABLE `vehiculo`
 -- AUTO_INCREMENT de la tabla `departamento`
 --
 ALTER TABLE `departamento`
-  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_departamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `estacionamiento`
 --
 ALTER TABLE `estacionamiento`
-  MODIFY `id_estacionamiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_estacionamiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `facultad`
@@ -444,7 +494,7 @@ ALTER TABLE `facultad`
 -- AUTO_INCREMENT de la tabla `registro`
 --
 ALTER TABLE `registro`
-  MODIFY `id_registro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_registro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
@@ -467,8 +517,8 @@ ALTER TABLE `contiene`
 -- Filtros para la tabla `dispone`
 --
 ALTER TABLE `dispone`
-  ADD CONSTRAINT `dispone_ibfk_1` FOREIGN KEY (`fk_id_departamento`) REFERENCES `departamento` (`id_departamento`),
-  ADD CONSTRAINT `dispone_ibfk_2` FOREIGN KEY (`fk_id_estacionamiento`) REFERENCES `estacionamiento` (`id_estacionamiento`);
+  ADD CONSTRAINT `dispone_ibfk_1` FOREIGN KEY (`fk_id_estacionamiento`) REFERENCES `estacionamiento` (`id_estacionamiento`),
+  ADD CONSTRAINT `dispone_ibfk_2` FOREIGN KEY (`fk_id_departamento`) REFERENCES `departamento` (`id_departamento`);
 
 --
 -- Filtros para la tabla `esta`
@@ -507,7 +557,7 @@ ALTER TABLE `pertenece`
 -- Filtros para la tabla `registro`
 --
 ALTER TABLE `registro`
-  ADD CONSTRAINT `registro_ibfk_1` FOREIGN KEY (`fk_id_estacionamiento`) REFERENCES `estacionamiento` (`id_estacionamiento`);
+  ADD CONSTRAINT `registro_ibfk_1` FOREIGN KEY (`fk_id_estacionamiento`) REFERENCES `estacionamiento` (`id_estacionamiento`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tiene`
