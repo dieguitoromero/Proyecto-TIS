@@ -1,6 +1,6 @@
 <?php
 
-include("conexion.php");
+require("conexion/conexion.php");
 $R = $_GET['Run_usuario'];
 
 
@@ -23,13 +23,14 @@ if (isset($_POST['update'])) {
   $run = $_POST['run'];
   $nombre = $_POST['nombre'];
   $correo = $_POST['correo'];
+  $tipo_usuario = $_POST['tipo_usuario'];
 
   if ($run != '' && $nombre != '' && $correo != '') {
 
-    $query  = "UPDATE `usuario` SET Run_usuario = '$run', Nombre_usuario = '$nombre', Correo_electronico = '$correo' WHERE Run_usuario = '$runold'";
+    $query  = "UPDATE `usuario` SET Run_usuario = '$run', Nombre_usuario = '$nombre', Correo_electronico = '$correo' WHERE Run_usuario = '$runold', Tipo_usuario = '$tipo_usuario";
     mysqli_query($conexion, $query);
 
-    header("Location: Registros_usuarios.php");
+    header("Location:   admin/registros_usuarios.php");
   } else {
 
     echo "rellene todo los datos";
@@ -59,7 +60,7 @@ if (isset($_POST['update'])) {
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img style="width: 100px; height:50px;" src="imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
+      <a class="navbar-brand" href="#"><img style=" height:50px;" src="imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -88,22 +89,26 @@ if (isset($_POST['update'])) {
 
       <div class="row">
         <div class="col-md-4 mx-auto">
-          <div class="card card-body">
+          <div class="card card-body text-center">
+            <h2>Editar Usuario</h2>
+
             <form action="editar_usuario.php?Run_usuario=<?php echo $_GET['Run_usuario'] ?>" method="POST">
               <div class="form-group">
-                <input type="text" name='run' value="<?php echo $R; ?>" class="form-control" placeholder="Run usuario">
+                <input type="text" name='run' value="<?php echo $R; ?>" class="form-control mb-3" placeholder="Run usuario">
               </div>
 
               <div class="form-group">
-                <input type="text" name='nombre' value="<?php echo $Nom; ?>" class="form-control" placeholder="Nombre completo">
+                <input type="text" name='nombre' value="<?php echo $Nom; ?>" class="form-control mb-3" placeholder="Nombre completo">
               </div>
 
               <div class="form-group">
-                <input type="email" name='correo' value="<?php echo $CE ?>" class="form-control" placeholder="Correo Electronico">
+                <input type="email" name='correo' value="<?php echo $CE ?>" class="form-control mb-3" placeholder="Correo Electronico">
               </div>
 
-
-              <button class="btn-succes" name="update">
+              <div class="form-group">
+                <input type="text" name='tipo_usuario' value="<?php echo $CE ?>" class="form-control mb-3" placeholder="Tipo Usuario">
+              </div>
+              <button class="btn-danger mt-2 col-12 border" name="update">
                 boton
               </button>
             </form>

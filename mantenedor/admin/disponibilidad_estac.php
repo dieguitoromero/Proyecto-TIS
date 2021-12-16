@@ -1,5 +1,5 @@
 <?php
-require "conexion.php";
+require "../conexion/conexion.php";
 ?>
 
 <!DOCTYPE html>
@@ -135,7 +135,7 @@ require "conexion.php";
       <div class="col-md-4 me-5">
         <canvas id="myChart" width="400" height="400"></canvas>
       </div >
-      <script src="estacio_disponible.js"></script>
+      <script src="../estacio_disponible.js"></script>
 
     </div>
   </main>

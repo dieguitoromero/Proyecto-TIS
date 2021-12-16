@@ -1,5 +1,7 @@
 <?php
 require "../conexion/auth.php";
+require "../conexion/conexion.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +19,7 @@ require "../conexion/auth.php";
   <link href="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet" type="text/css">
   <script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>
 
-  ><!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 
   <script
   src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -27,34 +29,6 @@ require "../conexion/auth.php";
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
-  <script> 
-
-    $(document).ready( function () {
-        $('#r_tabla').DataTable({
-
-          'ajax':{
-
-            "method": "POST",
-            "url": "../funciones/listar_ingreso.php"          
-          },
-
-          "columns":[
-
-              {"data":"id_registro"},
-              {"data":"fk_Patente_vehiculo"},
-              {"data":"fecha"},
-              {"data":"hora_entrada"},
-              {"data":"hora_salida"},
-              {"data":"fk_id_estacionamiento"}
-          ]
-        });
-
-      } );
-            
-</script> 
-
-
-      
 
   <title>Registro ingresos</title>
 </head>
@@ -67,7 +41,7 @@ require "../conexion/auth.php";
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="admin/index2.php"><img style="height:50px;" src="imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
+      <a class="navbar-brand" href="admin/index2.php"><img style="height:50px;" src="../imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -91,11 +65,9 @@ require "../conexion/auth.php";
   </nav>
 
 
-  <main class="col-md-9 mx-auto  px-md-4 mt-5">
-
-
+  <main class="col-md-9 mx-auto  px-md-4 mt-5 text-center">
     <div class="row ms-2">
-      <div class="col-md-8 col-sm-8">
+      <div class="col-md-8 col-sm-8 ">
         <h2>Registros de ingreso</h2>
       </div>
     </div>
@@ -103,7 +75,7 @@ require "../conexion/auth.php";
    <div class="container-fluid row justify-content-center">
     <div class="table-responsive col-9 mt-3 ">
 
-      <table class="table table-striped table-sm "  id="r_tabla" id="r_tabla2">
+      <table class="table table-striped table-sm "  id="r_tabla">
         <thead>
           <tr>
 
@@ -127,5 +99,30 @@ require "../conexion/auth.php";
 
      
 </body>
+<script> 
+
+$(document).ready( function () {
+    $('#r_tabla').DataTable({
+
+      'ajax':{
+
+        "method": "POST",
+        "url": "../funciones/listar_ingreso.php"          
+      },
+
+      "columns":[
+
+          {"data":"id_registro"},
+          {"data":"fk_Patente_vehiculo"},
+          {"data":"fecha"},
+          {"data":"hora_entrada"},
+          {"data":"hora_salida"},
+          {"data":"fk_id_estacionamiento"}
+      ]
+    });
+
+  } );
+        
+</script> 
 
 </html>

@@ -12,5 +12,5 @@ if (isset($_GET['Run_usuario'])) {
     }
 
 
-    header('location: Registros_usuarios.php');
+    header('location: admin/registros_usuarios.php');
 }

@@ -1,6 +1,6 @@
 <?php
-require "conexion.php";
-require "auth.php"
+require "conexion/conexion.php";
+require "conexion/auth.php"
 
 ?>
 
@@ -26,7 +26,7 @@ require "auth.php"
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index2.php"><img style="width: 110px; height:50px;" src="imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
+      <a class="navbar-brand" href="index2.php"><img style=" height:50px;" src="imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -56,7 +56,7 @@ require "auth.php"
         <div class="col-md-4 mx-auto">
           <div class="card card-body">
             <h2 class="mb-5">Registrar Vehiculo</h2>
-            <form action="add_vehiculo.php" method="POST">
+            <form action="usuario/funciones/add_vehiculo.php" method="POST">
               <div class="form-group mb-2">
                 <input type="text" id="patente" name='patente' value="" class="form-control" placeholder="Patente vehiculo">
               </div>
@@ -66,13 +66,11 @@ require "auth.php"
               <div class="form-group mb-2">
                 <input type="text" name='marca' value="" class="form-control" placeholder="Marca vehiculo">
               </div>
-
               <div class="form-group mb-2">
                 <input type="text" name='modelo' value="" class="form-control" placeholder="Modelo vehiculo">
               </div>
-
               <div class="form-group mb-2">
-                <select class="form-control" name="tipo_vehiculo" id="sel1">
+                <select class="form-control" name="tipo_usuario" id="sel1">
                   <option selected>Tipo de vehiculo</option>
                   <option>Automovil</option>
                   <option>Motocicleta</option>
@@ -81,28 +79,21 @@ require "auth.php"
                   <option>Furgoneta</option>
                 </select>
               </div>
-
               <div class="form-group mb-2 ">
                 <input type="text" name='desarrollo' value="" class="form-control" placeholder="Detalle">
               </div>
               <button class="mb-2 btn btn-danger col-12" type='submit' id='registrar'>
                 Registar
               </button>
-
             </form>
-            <button onclick='generadorQr()'>qr</button>
             <div class="row mx-auto mt-3 img-fluid">
               <div id="qrcode"></div>
             </div>
-
           </div>
-
         </div>
       </div>
-
     </div>
   </section>
-  
 </body>
 <script src="qrcode.min.js"></script>
 <script>

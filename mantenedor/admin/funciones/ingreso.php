@@ -44,6 +44,7 @@ if(isset($_POST["text"])){
             //ingresa 
         $sql = "INSERT INTO `ingresa`(`fecha`, `fk_id_registro`, `fk_Patente_vehiculo`) VALUES (NOW(),'$registro','$patente')";
         $resultado = mysqli_query($conexion, $sql);
+        header("../index2.php");
         }
         
         }

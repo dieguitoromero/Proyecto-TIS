@@ -75,7 +75,7 @@ require "../conexion/auth.php"
             <th scope="col">Marca</th>
             <th scope="col">Modelo</th>
             <th scope="col">Tipo vehiculo</th>
-            <th scope="col">Modificar/ Elimina / Descargar QR</th>
+            <th scope="col">Modificar/ Elimina / Mostrar QR</th>
           </tr>
         </thead>
         <tbody>

@@ -86,7 +86,7 @@ require "../conexion/auth.php"
               </button>
 
             </form>
-            <button onclick='generadorQr()'>qr</button>
+            
             <div class="row mx-auto mt-3 img-fluid">
               <div id="qrcode"></div>
             </div>

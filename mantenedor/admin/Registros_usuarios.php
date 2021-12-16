@@ -1,6 +1,6 @@
 <?php
 
-require "../conexion/auth.php"
+require "../conexion/auth.php";
 
 ?>
 
@@ -29,7 +29,7 @@ require "../conexion/auth.php"
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index2.php"><img style="height:50px;" src="imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
+      <a class="navbar-brand" href="index2.php"><img style="height:50px;" src="../imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -44,7 +44,7 @@ require "../conexion/auth.php"
           </nav>
 
           <li class="nav-item ms-5 ">
-            <a class="btn btn-danger" href="salir.php">Cerrar sesion</a>
+            <a class="btn btn-danger" href="../index.php">Cerrar sesion</a>
           </li>
         </ul>
       </div>
@@ -125,12 +125,12 @@ require "../conexion/auth.php"
                 <td><?php echo $row['Nombre_usuario'] ?></td>
                 <td><?php echo $row['Correo_electronico'] ?></td>
                 <td>
-                  <a href="editar_usuario.php?Run_usuario=<?php echo $row['Run_usuario'] ?>">
+                  <a href="../editar_usuario.php?Run_usuario=<?php echo $row['Run_usuario'] ?>">
                     <span class="material-icons text-dark fs-4 ms-2">
                       edit
                     </span>
                   </a>
-                  <a href="eliminar_usuario.php?Run_usuario=<?php echo $row['Run_usuario'] ?>">
+                  <a href="../eliminar_usuario.php?Run_usuario=<?php echo $row['Run_usuario'] ?>">
                     <span class="material-icons text-dark fs-4 ms-4">
                       delete
                     </span>

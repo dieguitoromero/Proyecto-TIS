@@ -19,7 +19,7 @@ require "../conexion/auth.php";
   <script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>
 
 
-  <title>Inicio</title>
+  <title>Inicio usuario</title>
 </head>
 
 <body>
@@ -40,13 +40,12 @@ require "../conexion/auth.php";
       </div>
     </div>
   </nav>
-  <section class="container px-4 py-5 my-5 " id="featured-3">
-
+  <section class="container px-4 py-5  " id="featured-3">
     <!-- realiza bienvenida -->
     <h1 class="pb-2 border-bottom text-center">Bienvenido <?php echo $row['Nombre_usuario']?></h1><br>
    
     
-    <div class="row g-4 py-5  mb-5">
+    <div class="row">
 
 
       <div class="card col-md-4">

@@ -1,6 +1,6 @@
 <?php
-
-require "../conexion/auth.php"
+require "../conexion/auth.php";
+require "../conexion/conexion.php";
 
 ?>
 
@@ -25,7 +25,7 @@ require "../conexion/auth.php"
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index2.php"><img style="height:50px;" src="imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
+      <a class="navbar-brand" href="index2.php"><img style="height:50px;" src="../imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,7 @@ require "../conexion/auth.php"
           </nav>
 
           <li class="nav-item ms-5">
-            <a class="btn btn-danger" href="salir.php">Cerrar sesion</a>
+            <a class="btn btn-danger" href="../salir.php">Cerrar sesion</a>
           </li>
 
         </ul>
@@ -73,7 +73,7 @@ require "../conexion/auth.php"
       </div>
       <div class="col-md-6  mt-1 col-sm-4">
 
-        <button type="button" class="btn btn-success active" onclick="location.href = 'registrar_vehiculo.php'" data-bs-toggle="button" autocomplete="off" aria-pressed="true">Agregar Vehiculo
+        <button type="button" class="btn btn-success active" onclick="location.href = '../registrar_vehiculo.php'" data-bs-toggle="button" autocomplete="off" aria-pressed="true">Agregar Vehiculo
           <span class="material-icons fs-6 ms-1 align-middle">
             add_circle
           </span>
@@ -89,7 +89,7 @@ require "../conexion/auth.php"
             <th scope="col">Marca</th>
             <th scope="col">Modelo</th>
             <th scope="col">Tipo vehiculo</th>
-            <th scope="col">Modificar/Eliminar</th>
+            <th scope="col">Modificar/Eliminar/Ver Qr</th>
           </tr>
         </thead>
         <tbody>
@@ -127,6 +127,11 @@ require "../conexion/auth.php"
                 <a href="eliminar_vehiculo.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
                   <span class="material-icons text-dark fs-4 ms-4">
                     delete
+                  </span>
+                </a>
+                <a href="qr_vehiculo.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
+                  <span class="material-icons text-dark fs-4 ms-4 ">
+                    qr_code_2
                   </span>
                 </a>
 

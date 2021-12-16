@@ -1,5 +1,5 @@
 <?php
-    include("../conexion.php");
+    include("../conexion/conexion.php");
 
     $consulta = "SELECT id_registro, fk_Patente_vehiculo, fecha, hora_entrada, hora_salida, fk_id_estacionamiento
                 FROM usuario U RIGHT JOIN vehiculo ve ON (U.Run_usuario = ve.fk_Run_usuario) 

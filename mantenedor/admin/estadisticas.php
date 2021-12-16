@@ -104,7 +104,7 @@ require "../conexion/auth.php"
             $resultado2 =  mysqli_query($conexion, $consulta2);
 
             ?>
-            <div class="col-5 ms-5 mt-4 ">
+            <div class="col-5 ms-5 ">
                 <canvas id="myChart" width="400" height="400"></canvas>
             </div>
             <script>
@@ -112,7 +112,7 @@ require "../conexion/auth.php"
                     console.log("ready!");
                     $.ajax({
                         type: "GET",
-                        url: "datos_fecha.php",
+                        url: "../datos_fecha.php",
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function(data) {

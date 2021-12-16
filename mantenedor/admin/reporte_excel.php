@@ -5,7 +5,7 @@ header("Content-Disposition: attachment; filename=Reporte-equipos.xls");
 ?>
 
 <table border="1" ">
-    <caption> <h1 >Reporte de equipos </h1></caption>
+    <caption> <h1 >Reporte de Estacionamientos </h1></caption>
     <th>ID Registro</th>
     <th>Patente Vehiculo</th>
     <th>Fecha</th>

@@ -4,9 +4,17 @@ require("../conexion/conexion.php");
 
 $run = $_POST["run"];
 $nombre = $_POST["nombre"];
-$mail = $_POST["correo"];
+$correo = $_POST["correo"];
 $tipo_usuario = $_POST["tipo_usuario"];
 $contraseña = $_POST["contraseña"];
+$administrador = $_POST["administrador"];
+
+
+if($administrador == 'Administrador'){
+    $valor= 1;
+}else{
+    $valor == 0;
+}
 
 
 if ($tipo_usuario == "carrier") {
@@ -22,7 +30,7 @@ if ($tipo_usuario == "carrier") {
     $estudiante = mysqli_query($conexion, $sqlestudiante);
 }
 
-$sql =  "INSERT INTO `usuario`(`Run_usuario`, `Nombre_usuario`, `Correo_electronico`, `tipo_usuario`, `Contraseña`) VALUES ('$run','$nombre','$correo','$tipo_usuario','".md5($contraseña)."')";
+$sql =  "INSERT INTO `usuario`(`Run_usuario`, `Nombre_usuario`, `Correo_electronico`, `tipo_usuario`, `Contraseña`, `Administrador`) VALUES ('$run','$nombre','$correo','$tipo_usuario','".md5($contraseña)."','$valor')";
 $resultado = mysqli_query($conexion, $sql);
 
 if (!$resultado) {
@@ -32,4 +40,5 @@ if (!$resultado) {
 
 echo "guardado";
 
-header('location: ../index.php');
+header('location: ../admin/index2.php');
+

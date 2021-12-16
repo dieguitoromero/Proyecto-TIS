@@ -56,7 +56,7 @@ require "../conexion/auth.php"
 		$patente_vehicular = $_GET["Patente_vehiculo"];
 		// $query = "DELETE FROM `vehiculo` WHERE Patente_vehiculo = '$patente_vehicular'";
 		// $resultado = mysqli_query($conexion, $query);
-		require "phpqrcode/qrlib.php";
+		require "../usuario/phpqrcode/qrlib.php";
 
 		//Declaramos una carpeta temporal para guardar la imagenes generadas
 		$dir = 'temp/';

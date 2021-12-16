@@ -16,14 +16,11 @@ if(isset($_POST["text"])){
 
     if (!isset($consulta)) {
         die("Patente no registrada");
-        header('location: ../scanner-inicio.php');
-    
+        
         }
 
     else{
-
-    
-        
+        header('location: ../scanner_salida.php');
     }
 } 
 

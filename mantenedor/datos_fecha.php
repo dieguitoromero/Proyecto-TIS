@@ -1,5 +1,5 @@
 <?php
-    include("conexion.php");
+    include("conexion/conexion.php");
 
     $consulta = "SELECT MONTH(Fecha) Mes, COUNT(*) total_mes FROM ingresa GROUP BY Mes DESC";
     

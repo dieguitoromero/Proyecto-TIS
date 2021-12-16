@@ -1,6 +1,6 @@
 <?php
 require "../conexion/auth.php";
-
+require "../conexion/conexion.php";  
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@ require "../conexion/auth.php";
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="adm/index2.html"><img style=" height:50px;" src="imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
+      <a class="navbar-brand" href="adm/index2.html"><img style=" height:50px;" src="../imagenes/logo_horizontal_color_sinfondo.png" alt=""></a>
       <div class="navbar justify-content-md-end me-5" id="navbarNav">
         <ul class="navbar-nav ">
 
@@ -36,13 +36,13 @@ require "../conexion/auth.php";
     </div>
   </nav>
 
-  <section class="container px-4 py-5 my-5 " id="featured-3">
-    <h1 class="pb-2 border-bottom text-center">Mantenedores</h1><br>
+  <section class="container " id="featured-3">
+    <h1 class="pb-2 border-bottom text-center">Administrador</h1><br>
     <p class="text-center fs-5">Bienvenido <?php echo $row['Nombre_usuario'] ?></p>
 
     <div class="row ">
 
-      <div class="feature col-6 mt-5 border-dark">
+      <div class="feature col-lg-4 col-md-6 col-s-12 mt-5 border-dark">
         <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
           <span class="material-icons fs-1 ">
             directions_car
@@ -55,7 +55,7 @@ require "../conexion/auth.php";
         </div>
       </div>
 
-      <div class="feature col-6 mt-5 border-dark">
+      <div class="feature col-lg-4 col-md-6 col-s-12 mt-5 border-dark">
         <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
           <span class="material-icons fs-1 ">
             account_circle
@@ -68,7 +68,7 @@ require "../conexion/auth.php";
         </div>
       </div>
 
-      <div class="feature col-6 mt-5 border-dark">
+      <div class="feature col-lg-4 col-md-6 col-s-12 mt-5 border-dark">
         <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
           <span class="material-icons fs-1">
             remove_red_eye
@@ -81,7 +81,7 @@ require "../conexion/auth.php";
         </div>
         </div>
 
-        <div class="feature col-6 mt-5 border-dark">
+        <div class="feature col-lg-4 col-md-6 col-s-12 mt-5 border-dark">
           <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
             <span class="material-icons fs-1 ">
               bar_chart
@@ -91,6 +91,30 @@ require "../conexion/auth.php";
           <p>Encontraras el registro estadistico completo de entrada y salidas</p>
           <div class="d-grid gap-2 d-md-block">
             <button class="btn btn-danger col-9" onclick="location.href = 'estadisticas.php'" type="button">Ver</button>
+          </div>
+        </div>
+        <div class="feature col-lg-4 col-md-6 col-s-12 mt-5 border-dark">
+          <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
+            <span class="material-icons fs-1 ">
+            qr_code_scanner
+            </span>
+          </div>
+          <h2>Scaner de ingreso</h2>
+          <p>Encontraras el escaner que registra la entrada</p><br>
+          <div class="d-grid gap-2 d-md-block">
+            <button class="btn btn-danger col-9" onclick="location.href = 'scanner_inicio.php'" type="button">Ver</button>
+          </div>
+        </div>
+        <div class="feature col-lg-4 col-md-6 col-s-12 mt-5 border-dark">
+          <div class="d-block   bg-gradient col-2 rounded-3" style="height: 50px;">
+            <span class="material-icons fs-1 ">
+            qr_code_scanner
+            </span>
+          </div>
+          <h2>Scaner de salida</h2>
+          <p>Encontraras el escaner que registra la salida</p><br>
+          <div class="d-grid gap-2 d-md-block">
+            <button class="btn btn-danger col-9" onclick="location.href = 'scanner_salida.php'" type="button">Ver</button>
           </div>
         </div>
 

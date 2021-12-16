@@ -1,5 +1,5 @@
 <?php
-    include("../conexion.php");
+    include("../conexion/conexion.php");
 
     $consulta = "SELECT de.nombre_departamento, (COUNT(esta.id_estacionamiento)/(SELECT COUNT(*) FROM dispone))*100 as Promedio 
                 from departamento de LEFT JOIN dispone dis ON (de.id_departamento = dis.fk_id_departamento) 
