@@ -74,7 +74,7 @@ require "../conexion/conexion.php";
             remove_red_eye
           </span>
         </div>
-        <h2>Registro ingreso</h2>
+        <h2>Registro ingresos</h2>
         <p>Encontraras el registro completo de los ingresos registrados en la UCSC</p>
         <div class="d-grid gap-2 d-md-block">
           <button class="btn btn-danger col-9" onclick="location.href = 'registros_ingreso.php'" type="button">Ver</button>

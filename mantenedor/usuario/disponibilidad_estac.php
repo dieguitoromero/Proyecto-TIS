@@ -46,7 +46,7 @@ require "../conexion/conexion.php";
         <nav aria-label="breadcrumb me-5 ">
             <ol class="breadcrumb ">
               <li class="breadcrumb-item mt-2"><a href="index2.php">Inicio</a></li>
-              <li class="breadcrumb-item active mt-2">Estacionamientos disponible</li>
+              <li class="breadcrumb-item active mt-2">Estacionamientos disponibles</li>
             </ol>
           </nav>
 
@@ -63,7 +63,7 @@ require "../conexion/conexion.php";
   <main class="container-fluid ">
     
     <div class="row mx-5 mt-5">
-    <h1>Estacionamientos disponible</h1>
+    <h1>Estacionamientos disponibles</h1>
       <div class="col-md-6 ms-5 my-5 me-5">
 
         <table class="table table-striped" id="tabla">

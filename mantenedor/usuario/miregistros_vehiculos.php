@@ -1,5 +1,6 @@
 <?php
-require "../conexion/auth.php"
+require "../conexion/conexion.php";
+require "../conexion/auth.php";
 
 ?>
 
@@ -100,7 +101,7 @@ require "../conexion/auth.php"
               <td><?php echo $row['Modelo_vehiculo'] ?></td>
               <td><?php echo $row['tipo_vehiculo'] ?></td>
               <td>
-                <a class="me-4" href="../edit_vehiculo.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
+                <a class="me-4" href="edit_vehiculo.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
                   <span class="material-icons text-dark fs-4 ms-4">
                     edit
                   </span>
@@ -133,6 +134,7 @@ require "../conexion/auth.php"
     </div>
     </div>
   </main>
+  
 
 </body>
 

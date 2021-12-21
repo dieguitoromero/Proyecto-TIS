@@ -118,13 +118,13 @@ require "../conexion/conexion.php";
               <td><?php echo $row['Modelo_vehiculo'] ?></td>
               <td><?php echo $row['tipo_vehiculo'] ?></td>
               <td>
-                <a href="edit_vehiculo.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
+                <a href="edit_vehiculo_admin.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
                   <span class="material-icons text-dark fs-4 ms-4">
                     edit
                   </span>
                 </a>
 
-                <a href="eliminar_vehiculo.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
+                <a href="eliminar_vehiculo_admin.php?Patente_vehiculo=<?php echo $row['Patente_vehiculo'] ?>">
                   <span class="material-icons text-dark fs-4 ms-4">
                     delete
                   </span>

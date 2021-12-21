@@ -1,6 +1,6 @@
 <?php
-require "conexion/auth.php";
-require "conexion/conexion.php";
+require "../conexion/auth.php";
+require "../conexion/conexion.php";
 
 if (isset($_GET['Patente_vehiculo'])) {
 
@@ -14,7 +14,7 @@ if (isset($_GET['Patente_vehiculo'])) {
 
   
 
-    header('location: usuario/miregistros_vehiculos.php');
+    header('location: registros_vehiculos.php');
 }
 
 

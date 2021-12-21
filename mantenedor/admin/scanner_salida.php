@@ -57,6 +57,7 @@
         console.log(content);
         document.getElementById('text').value=content;
         document.forms[0].submit();
+        window.location.href = "index2.php";
       });
 
       Instascan.Camera.getCameras().then(function (cameras) {

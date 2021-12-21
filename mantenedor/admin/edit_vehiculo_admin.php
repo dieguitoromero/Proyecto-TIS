@@ -33,7 +33,7 @@ if (isset($_GET['Patente_vehiculo'])) {
     $query  = "UPDATE `vehiculo` SET Patente_vehiculo = '$pa', Marca_vehiculo = '$m', modelo_vehiculo = '$mo' , tipo_vehiculo = '$t', descripcion = '$d', fk_run_usuario = '$r'  WHERE Patente_vehiculo = '$paold'";
     mysqli_query($conexion, $query);
 
-    header("Location: miregistros_vehiculos.php");
+    header("Location:registros_vehiculos.php");
   }
 }
 
@@ -93,18 +93,11 @@ if (isset($_GET['Patente_vehiculo'])) {
       <div class="row">
         <div class="col-md-4 mx-auto">
           <div class="card card-body">
-            <form action="edit_vehiculo.php?Patente_vehiculo=<?php echo $_GET['Patente_vehiculo']; ?>" method="POST">
+            <form action="edit_vehiculo_admin.php?Patente_vehiculo=<?php echo $_GET['Patente_vehiculo']; ?>" method="POST">
               <div class="text-center mt-2 mb-5">
                 <h3>Editar datos del vehiculo</h3>
               </div>
-              <div class="form-group mb-1">
-                <input type="text" name='run' value="<?php echo $run; ?>" class="form-control" placeholder="Update Patente">
-              </div>
-
-              <div class="form-group mb-1">
-                <input type="text" name='Patente_vehiculo' value="<?php echo $pv; ?>" class="form-control" placeholder="Update Patente">
-              </div>
-
+              
               <div class="form-group mb-1">
                 <input type="text" name='Marca_vehiculo' value="<?php echo $mv; ?>" class="form-control" placeholder="Update marca">
               </div>

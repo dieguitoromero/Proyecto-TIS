@@ -59,6 +59,8 @@
     scanner.addListener('scan', function(content) {
       document.getElementById('text').value = content;
       document.forms[0].submit();
+      window.location.href = "index2.php";
+      alert("Ingreso con exito");
     });
 
     Instascan.Camera.getCameras().then(function(cameras) {

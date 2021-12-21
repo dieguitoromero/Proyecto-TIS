@@ -1,5 +1,6 @@
 <?php
 
+require("conexion/auth.php");
 require("conexion/conexion.php");
 $R = $_GET['Run_usuario'];
 
@@ -23,14 +24,13 @@ if (isset($_POST['update'])) {
   $run = $_POST['run'];
   $nombre = $_POST['nombre'];
   $correo = $_POST['correo'];
-  $tipo_usuario = $_POST['tipo_usuario'];
 
   if ($run != '' && $nombre != '' && $correo != '') {
 
-    $query  = "UPDATE `usuario` SET Run_usuario = '$run', Nombre_usuario = '$nombre', Correo_electronico = '$correo' WHERE Run_usuario = '$runold', Tipo_usuario = '$tipo_usuario";
+    $query  = "UPDATE `usuario` SET Run_usuario = '$run', Nombre_usuario = '$nombre', Correo_electronico = '$correo' WHERE Run_usuario = '$runold'";
     mysqli_query($conexion, $query);
 
-    header("Location:   admin/registros_usuarios.php");
+    header("Location:admin/registros_usuarios.php");
   } else {
 
     echo "rellene todo los datos";
@@ -108,9 +108,11 @@ if (isset($_POST['update'])) {
               <div class="form-group">
                 <input type="text" name='tipo_usuario' value="<?php echo $CE ?>" class="form-control mb-3" placeholder="Tipo Usuario">
               </div>
-              <button class="btn-danger mt-2 col-12 border" name="update">
-                boton
+              <div class="class text-center">
+              <button class="btn btn-danger mt-2" name="update">
+                Guardar Cambios
               </button>
+              </div>
             </form>
 
           </div>

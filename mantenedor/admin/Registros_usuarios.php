@@ -130,7 +130,7 @@ require "../conexion/auth.php";
                       edit
                     </span>
                   </a>
-                  <a href="../eliminar_usuario.php?Run_usuario=<?php echo $row['Run_usuario'] ?>">
+                  <a href="eliminar_usuario.php?Run_usuario=<?php echo $row['Run_usuario'] ?>">
                     <span class="material-icons text-dark fs-4 ms-4">
                       delete
                     </span>

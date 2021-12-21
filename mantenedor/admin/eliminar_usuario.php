@@ -1,5 +1,5 @@
 <?php
-require("conexion/auth.php");
+require("../conexion/auth.php");
 
 if (isset($_GET['Run_usuario'])) {
 
@@ -12,5 +12,5 @@ if (isset($_GET['Run_usuario'])) {
     }
 
 
-    header('location: admin/registros_usuarios.php');
+    header('location: registros_usuarios.php');
 }
